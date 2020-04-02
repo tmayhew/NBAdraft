@@ -182,12 +182,14 @@ as.1998 <- c("Anfernee Hardaway", "Tim Hardaway", "Grant Hill*", "Michael Jordan
              "Antoine Walker", "Jayson Williams", "Vin Baker", "Kobe Bryant", "Tim Duncan", 
              "Kevin Garnett", "Eddie Jones", "Jason Kidd*", "Karl Malone*", "Shaquille O'Neal*",
              "Gary Payton*", "Mitch Richmond*", "David Robinson*", "Nick Van Exel")
+as.1997 <- c()
 
 as.names = c(as.2020, as.2019, as.2018, as.2017, as.2016, 
              as.2015, as.2014, as.2013, as.2012, as.2011,
              as.2010, as.2009, as.2008, as.2007, as.2006,
              as.2005, as.2004, as.2003, as.2002, as.2001, 
              as.2000, as.1999, as.1998) #as.1997, as.1996, #as.1995)
+
 data.frame(table(as.names))
 
 
