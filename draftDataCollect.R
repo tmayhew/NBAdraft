@@ -274,17 +274,6 @@ names(d) = c("Player", "Draft Year")
 print(d)
 d %>% arrange(desc(`Draft Year`))
 
-
-#"Jason Kidd"  
-#"Shaquille O'Neal"  
-#"Ben Wallace" 
-#"Grant Hill"   
-#"Sam Cassell"  
-#"Brad Miller"  
-#"Michael Jordan"    
-#"Jamal Mashburn "   
-#"Gary Payton"      
-#"Chris Webber"      
 #"Alonzo Mourning"   
 #"Dikembe Mutombo"   
 #"Karl Malone"       
