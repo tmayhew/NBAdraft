@@ -64,6 +64,7 @@ stats1999$Player[3] = "Manu Ginobili"
 stats1998 = arrange(scrape_cbbplayers(1998), -WS)
 stats1997 = arrange(scrape_cbbplayers(1997), -WS)
 stats1996 = arrange(scrape_cbbplayers(1996), -WS)
+stats1996$Player[5] = "Peja Stojakovic"
 stats1995 = arrange(scrape_cbbplayers(1995), -WS)
 
 
@@ -200,6 +201,8 @@ as.names = c(as.2020, as.2019, as.2018, as.2017, as.2016,
              as.2000, as.1999, as.1998) #as.1997, as.1996, #as.1995)
 as.app.df = data.frame(table(as.names))
 
+# Every row (next 25 rows) should be all-stars
+
 stats2019$Player[which(stats2019$Player %in% as.app.df$as.names)]
 stats2018$Player[which(stats2018$Player %in% as.app.df$as.names)]
 stats2017$Player[which(stats2017$Player %in% as.app.df$as.names)]
@@ -253,3 +256,56 @@ consistency_list = c(stats2019$Player[which(stats2019$Player %in% as.app.df$as.n
                     stats1995$Player[which(stats1995$Player %in% as.app.df$as.names)])
 
 unique(as.names[which(as.names %!in% consistency_list)])
+
+### Names that have AS appearances but aren't in the draft class dataframes ###
+#### these guys should have draft years prior to 1995.
+p = c("Jason Kidd", "Shaquille O'Neal", "Ben Wallace", "Grant Hill", 
+      "Sam Cassell", "Brad Miller", "Michael Jordan", 
+      "Jamal Mashburn", "Gary Payton", "Chris Webber", "Alonzo Mourning", 
+      "Dikembe Mutombo", "Karl Malone", "Antonio Davis", "Allan Houston", 
+      "Anthony Mason", "Glenn Robinson", "Latrell Sprewell", "Vlade Divac", 
+      "David Robinson", "Dale Davis", "Eddie Jones", "Reggie Miller", 
+      "John Stockton", "Anfernee Hardaway", "Tim Hardaway", "Shawn Kemp", 
+      "Glen Rice", "Steve Smith", "Rik Smits", "Jayson Williams", 
+      "Vin Baker", "Mitch Richmond", "Nick Van Exel")
+c = c(1994, 1992, 1996, 1994, 1993, 1998, 1984, 1993, 1990, 1993)
+d = cbind.data.frame(p[1:length(c)], c)
+names(d) = c("Player", "Draft Year")
+print(d)
+d %>% arrange(desc(`Draft Year`))
+
+
+#"Jason Kidd"  
+#"Shaquille O'Neal"  
+#"Ben Wallace" 
+#"Grant Hill"   
+#"Sam Cassell"  
+#"Brad Miller"  
+#"Michael Jordan"    
+#"Jamal Mashburn "   
+#"Gary Payton"      
+#"Chris Webber"      
+#"Alonzo Mourning"   
+#"Dikembe Mutombo"   
+#"Karl Malone"       
+#"Antonio Davis"    
+#"Allan Houston"     
+#"Anthony Mason"     
+#"Glenn Robinson"    
+#"Latrell Sprewell"  
+#"Vlade Divac"      
+#"David Robinson"    
+#"Dale Davis"        
+#"Eddie Jones"       
+#"Reggie Miller"     
+#"John Stockton"    
+#"Anfernee Hardaway" 
+#"Tim Hardaway"      
+#"Shawn Kemp"        
+#"Glen Rice"         
+#"Steve Smith"      
+#"Rik Smits"         
+#"Jayson Williams"   
+#"Vin Baker"         
+#"Mitch Richmond"    
+#"Nick Van Exel"    
