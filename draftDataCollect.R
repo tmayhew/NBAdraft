@@ -218,7 +218,6 @@ as.names = c(as.2020, as.2019, as.2018, as.2017, as.2016,
 as.app.df = data.frame(table(as.names))
 
 # Every row (next 25 rows) should be all-stars
-
 stats2019$Player[which(stats2019$Player %in% as.app.df$as.names)]
 stats2018$Player[which(stats2018$Player %in% as.app.df$as.names)]
 stats2017$Player[which(stats2017$Player %in% as.app.df$as.names)]
@@ -292,4 +291,45 @@ c = c(1994, 1992, 1996, 1994, 1993, 1998, 1984, 1993, 1990, 1993, 1992,
 d = cbind.data.frame(p[1:length(c)], c)
 names(d) = c("Player", "Draft Year")
 d %>% arrange(desc(`Draft Year`))
+
+add_allstar <- function(df = stats2019){
+  for (i in 1:nrow(df)){
+    if (df$Player[i] %in% consistency_list){
+      for (j in 1:nrow(as.app.df)){
+        if (df$Player[i] == as.app.df$as.names[j]){
+          df$allstar[i] = as.app.df$Freq[j]
+        }
+      }
+    } else{
+      df$allstar[i] = 0
+    }
+  }
+  return(df)
+}
+
+stats2019 = add_allstar(stats2019) %>% arrange(desc(allstar))
+stats2018 = add_allstar(stats2018) %>% arrange(desc(allstar))
+stats2017 = add_allstar(stats2017) %>% arrange(desc(allstar))
+stats2016 = add_allstar(stats2016) %>% arrange(desc(allstar))
+stats2015 = add_allstar(stats2015) %>% arrange(desc(allstar))
+stats2014 = add_allstar(stats2014) %>% arrange(desc(allstar))
+stats2013 = add_allstar(stats2013) %>% arrange(desc(allstar))
+stats2012 = add_allstar(stats2012) %>% arrange(desc(allstar))
+stats2011 = add_allstar(stats2011) %>% arrange(desc(allstar))
+stats2010 = add_allstar(stats2010) %>% arrange(desc(allstar))
+stats2009 = add_allstar(stats2009) %>% arrange(desc(allstar))
+stats2008 = add_allstar(stats2008) %>% arrange(desc(allstar))
+stats2007 = add_allstar(stats2007) %>% arrange(desc(allstar))
+stats2006 = add_allstar(stats2006) %>% arrange(desc(allstar))
+stats2005 = add_allstar(stats2005) %>% arrange(desc(allstar))
+stats2004 = add_allstar(stats2004) %>% arrange(desc(allstar))
+stats2003 = add_allstar(stats2003) %>% arrange(desc(allstar))
+stats2002 = add_allstar(stats2002) %>% arrange(desc(allstar))
+stats2001 = add_allstar(stats2001) %>% arrange(desc(allstar))
+stats2000 = add_allstar(stats2000) %>% arrange(desc(allstar))
+stats1999 = add_allstar(stats1999) %>% arrange(desc(allstar))
+stats1998 = add_allstar(stats1998) %>% arrange(desc(allstar))
+stats1997 = add_allstar(stats1997) %>% arrange(desc(allstar))
+stats1996 = add_allstar(stats1996) %>% arrange(desc(allstar))
+stats1995 = add_allstar(stats1995) %>% arrange(desc(allstar))
 
