@@ -192,13 +192,23 @@ as.1998 <- c("Anfernee Hardaway", "Tim Hardaway", "Grant Hill", "Michael Jordan"
              "Antoine Walker", "Jayson Williams", "Vin Baker", "Kobe Bryant", "Tim Duncan", 
              "Kevin Garnett", "Eddie Jones", "Jason Kidd", "Karl Malone", "Shaquille O'Neal",
              "Gary Payton", "Mitch Richmond", "David Robinson", "Nick Van Exel")
-as.1997 <- c()
+as.1997 = c("Vin Baker", "Terrell Brandon", "Joe Dumars", "Patrick Ewing", "Anfernee Hardaway", "Tim Hardaway", 
+            "Grant Hill", "Michael Jordan", "Christian Laettner", "Alonzo Mourning", "Dikembe Mutombo", 
+            "Scottie Pippen", "Glen Rice", "Chris Webber", "Charles Barkley", "Clyde Drexler", "Kevin Garnett", 
+            "Chris Gatling", "Tom Gugliotta", "Eddie Jones", "Shawn Kemp", "Karl Malone", "Hakeem Olajuwon", 
+            "Shaquille O'Neal", "Gary Payton", "Mitch Richmond", "Detlef Schrempf", "Latrell Sprewell", "John Stockton")
+as.1996 = c("Vin Baker", "Terrell Brandon", "Patrick Ewing", "Anfernee Hardaway", "Grant Hill", "Juwan Howard", 
+            "Michael Jordan", "Reggie Miller", "Alonzo Mourning", "Shaquille O'Neal", "Scottie Pippen", "Glen Rice", 
+            "Charles Barkley", "Clyde Drexler", "Sean Elliott", "Shawn Kemp", "Jason Kidd", "Karl Malone", 
+            "Dikembe Mutombo", "Hakeem Olajuwon", "Gary Payton", "Mitch Richmond", "David Robinson", "John Stockton")
+
+
 
 as.names = c(as.2020, as.2019, as.2018, as.2017, as.2016, 
              as.2015, as.2014, as.2013, as.2012, as.2011,
              as.2010, as.2009, as.2008, as.2007, as.2006,
              as.2005, as.2004, as.2003, as.2002, as.2001, 
-             as.2000, as.1999, as.1998) #as.1997, as.1996, #as.1995)
+             as.2000, as.1999, as.1998, as.1997, as.1996) #, as.1995)
 as.app.df = data.frame(table(as.names))
 
 # Every row (next 25 rows) should be all-stars
@@ -259,6 +269,7 @@ unique(as.names[which(as.names %!in% consistency_list)])
 
 ### Names that have AS appearances but aren't in the draft class dataframes ###
 #### these guys should have draft years prior to 1995.
+
 p = c("Jason Kidd", "Shaquille O'Neal", "Ben Wallace", "Grant Hill", 
       "Sam Cassell", "Brad Miller", "Michael Jordan", 
       "Jamal Mashburn", "Gary Payton", "Chris Webber", "Alonzo Mourning", 
