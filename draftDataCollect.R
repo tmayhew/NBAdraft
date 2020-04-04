@@ -287,7 +287,8 @@ p = c("Jason Kidd", "Shaquille O'Neal", "Ben Wallace", "Grant Hill",
       "Vin Baker", "Mitch Richmond", "Nick Van Exel")
 c = c(1994, 1992, 1996, 1994, 1993, 1998, 1984, 1993, 1990, 1993, 1992, 
       1991, 1985, 1990, 1993, 1988, 1994, 1992, 1989, 1987, 1991, 1994,
-      )
+      1987, 1984, 1993, 1989, 1989, 1989, 1991, 1988, 1990, 1993, 1988, 
+      1993)
 d = cbind.data.frame(p[1:length(c)], c)
 names(d) = c("Player", "Draft Year")
 d %>% arrange(desc(`Draft Year`))
