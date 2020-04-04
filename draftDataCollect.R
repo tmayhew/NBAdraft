@@ -15,11 +15,11 @@ scrape_cbbplayers = function(given_year = 2019){
   players <- players[,-1]
   players <- players[-1,]
   
-  names(players) = c("Tm", "Player", "College", "Yrs", "G", "MP", "PTS", "TRB", "AST", "FG.", "X3P.", "FT.", "MPG", "PTS", "TRB", "AST", "WS", "WS.48", "BPM", "VORP")
-  players = players[,-c(7:9)]
+  names(players) = c("Tm", "Player", "College", "Yrs", "G", "MP", "PTS", "TRB", "AST", "FG.", "X3P.", "FT.", "MPG", "PPG", "RPG", "APG", "WS", "WS.48", "BPM", "VORP")
+  
   
   for (i in 4:ncol(players)){
-    for (j in 7:9){
+    for (j in 10:12){
       if (players[j,i] == ""){
         players[j,i] = "0"
       }
