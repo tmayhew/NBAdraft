@@ -285,33 +285,10 @@ p = c("Jason Kidd", "Shaquille O'Neal", "Ben Wallace", "Grant Hill",
       "John Stockton", "Anfernee Hardaway", "Tim Hardaway", "Shawn Kemp", 
       "Glen Rice", "Steve Smith", "Rik Smits", "Jayson Williams", 
       "Vin Baker", "Mitch Richmond", "Nick Van Exel")
-c = c(1994, 1992, 1996, 1994, 1993, 1998, 1984, 1993, 1990, 1993)
+c = c(1994, 1992, 1996, 1994, 1993, 1998, 1984, 1993, 1990, 1993, 1992, 
+      1991, 1985, 1990, 1993, 1988, 1994, 1992, 1989, 1987, 1991, 1994,
+      )
 d = cbind.data.frame(p[1:length(c)], c)
 names(d) = c("Player", "Draft Year")
-print(d)
 d %>% arrange(desc(`Draft Year`))
 
-#"Alonzo Mourning"   
-#"Dikembe Mutombo"   
-#"Karl Malone"       
-#"Antonio Davis"    
-#"Allan Houston"     
-#"Anthony Mason"     
-#"Glenn Robinson"    
-#"Latrell Sprewell"  
-#"Vlade Divac"      
-#"David Robinson"    
-#"Dale Davis"        
-#"Eddie Jones"       
-#"Reggie Miller"     
-#"John Stockton"    
-#"Anfernee Hardaway" 
-#"Tim Hardaway"      
-#"Shawn Kemp"        
-#"Glen Rice"         
-#"Steve Smith"      
-#"Rik Smits"         
-#"Jayson Williams"   
-#"Vin Baker"         
-#"Mitch Richmond"    
-#"Nick Van Exel"    
