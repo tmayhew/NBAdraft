@@ -563,13 +563,13 @@ kmeans_4 = kmeans(perc.df[2],centers=4, nstart = 10, iter.max = 10)
 kmeans_5 = kmeans(perc.df[2],centers=5, nstart = 10, iter.max = 10)
 perc.df1 = cbind.data.frame(perc.df, p2 = kmeans_2$cluster, p3 = kmeans_3$cluster, p4 = kmeans_4$cluster, p5 = kmeans_5$cluster)
 
-pl1 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_point(aes(color = as.factor(p2))) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Two Groups") + geom_vline(xintercept = 2010.5, linetype = "dashed", color = "grey30")
+pl1 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_bar(stat = "identity", aes(fill = as.factor(p2)), width = I(1/8)) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Two Groups") + geom_vline(xintercept = 2010.5, linetype = "dashed", color = "grey30")
 
-pl2 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_point(aes(color = as.factor(p3))) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Three Groups") + geom_vline(xintercept = c(2014.5, 2007.5), linetype = "dashed", color = "grey30")
+pl2 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_bar(stat = "identity", aes(fill = as.factor(p3)), width = I(1/8)) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Three Groups") + geom_vline(xintercept = c(2014.5, 2007.5), linetype = "dashed", color = "grey30")
 
-pl3 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_point(aes(color = as.factor(p4))) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Four Groups") + geom_vline(xintercept = c(2016.5, 2010.5, 2005.5), linetype = "dashed", color = "grey30")
+pl3 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_bar(stat = "identity", aes(fill = as.factor(p4)), width = I(1/8)) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Four Groups") + geom_vline(xintercept = c(2016.5, 2010.5, 2005.5), linetype = "dashed", color = "grey30")
 
-pl4 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_point(aes(color = as.factor(p5))) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Five Groups") + geom_vline(xintercept = c(2016.5, 2010.5, 2005.5, 2013.5), linetype = "dashed", color = "grey30")
+pl4 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_bar(stat = "identity", aes(fill = as.factor(p5)), width = I(1/6)) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Five Groups") + geom_vline(xintercept = c(2016.5, 2010.5, 2005.5, 2013.5), linetype = "dashed", color = "grey30")
 
 ggarrange(pl1, pl2, pl3, pl4, ncol = 2, nrow = 2)
 
