@@ -2,6 +2,7 @@ library(rvest)
 library(ggplot2)
 library(ggthemes)
 library(dplyr)
+library(formattable)
 #'%!in%' <- function(x,y)!('%in%'(x,y))
 
 scrape_cbbplayers = function(given_year = 2019){
@@ -66,8 +67,6 @@ stats1997 = arrange(scrape_cbbplayers(1997), -WS)
 stats1996 = arrange(scrape_cbbplayers(1996), -WS)
 stats1996$Player[5] = "Peja Stojakovic"
 stats1995 = arrange(scrape_cbbplayers(1995), -WS)
-
-
 
 
 # Next Step: Using the NBA Draft Class dataframe, pair with all-star/all-nba appearances to rank the players
@@ -338,7 +337,8 @@ df = rbind.data.frame(stats2019, stats2018, stats2017, stats2016, stats2015,
                       stats2009, stats2008, stats2007, stats2006, stats2005,
                       stats2004, stats2003, stats2002, stats2001, stats2000,
                       stats1999, stats1998, stats1997, stats1996, stats1995)
-#cor-plot
+
+# Correlation Plot
 df.numeric <- select(df, -Tm, -Yrs, -College, -Player, -Yr)
 draft.cor1 <- data.frame(abs(cor(df.numeric)[,"allstar"]))
 colnames(draft.cor1) <- "cor"
@@ -347,6 +347,7 @@ mm.cor1 <- select(arrange(draft.cor1, desc(cor)), var, cor)
 mm.cor1 <- mm.cor1[2:nrow(mm.cor1),]
 pl1 = ggplot(data=mm.cor1, aes(x=reorder(var, cor), y=cor)) + geom_bar(stat = "identity", width = I(1/8), position = position_dodge(width=0.2)) + coord_flip() + scale_x_discrete("Variable") + theme_clean() + scale_y_continuous("Absolute Value of Correlation", breaks = seq(0, 0.60, by = 0.10)) + ggtitle("Variable Correlation", subtitle = "Correlation with All Star Appearences")
 
+# AIC Plot
 aic <- vector()
 
 fit1 <- glm(allstar ~ VORP, data = df)
@@ -378,11 +379,75 @@ aic[8] <- fit8$aic
 fit9 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG, data = df)
 aic[9] <- fit9$aic
 
+fit10 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + APG, data = df)
+aic[10] <- fit10$aic
+
+# Assists per game variable brought AIC up
+
+fit11 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM, data = df)
+aic[11] <- fit11$aic
+
+fit12 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG, data = df)
+aic[12] <- fit12$aic
+
+fit13 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG + WS.48, data = df)
+aic[13] <- fit13$aic
+
+fit14 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG + FT., data = df)
+aic[14] <- fit14$aic
+
+fit15 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG + FG., data = df)
+aic[15] <- fit15$aic
+
+fit16 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG + X3P., data = df)
+aic[16] <- fit16$aic
+
+
 aic.val <- data.frame(aic)
 aic.val$model <- seq(1, nrow(aic.val))
 aic.val$optimal <- ifelse(aic.val$aic == min(aic.val$aic), "Optimal Point", "")
 
+
 print(aic.val)
 ggplot(data=aic.val, aes(x=model, y=aic)) + geom_line(linetype = "dashed") + geom_point(aes(color = optimal)) + 
   theme_bw() + scale_x_continuous("Model", breaks = seq(1,length(aic.val$model))) + 
-  scale_y_continuous("AIC", breaks = seq(600, 1600, by=100)) + theme(legend.position = "none") + scale_color_manual(values = c("black", "red3")) + ggtitle("AIC: Measuring Goodness of Fit for each Model")
+  scale_y_continuous("AIC", breaks = seq(2600, 3100, by=25)) + theme(legend.position = "none") + scale_color_manual(values = c("black", "red3")) + ggtitle("AIC: Measuring Goodness of Fit for each Model")
+
+# MODEL 12:
+lm.model <- lm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG, data = df)
+print(anova(lm.model))
+summary(lm.model)$coefficients[,"Estimate"]
+
+# Preliminary Assessment of Predicted All Star Appearances
+allstar.pred = predict(lm.model, df)
+as.df = cbind.data.frame(df, allstar.pred)
+write.csv(as.df, file = "allstardf.csv")
+
+
+as.stats2019 = as.df %>% filter(Yr == 2019) %>% arrange(desc(allstar.pred))
+as.stats2018 = as.df %>% filter(Yr == 2018) %>% arrange(desc(allstar.pred))
+as.stats2017 = as.df %>% filter(Yr == 2017) %>% arrange(desc(allstar.pred))
+as.stats2016 = as.df %>% filter(Yr == 2016) %>% arrange(desc(allstar.pred))
+as.stats2015 = as.df %>% filter(Yr == 2015) %>% arrange(desc(allstar.pred))
+as.stats2014 = as.df %>% filter(Yr == 2014) %>% arrange(desc(allstar.pred))
+as.stats2013 = as.df %>% filter(Yr == 2013) %>% arrange(desc(allstar.pred))
+as.stats2012 = as.df %>% filter(Yr == 2012) %>% arrange(desc(allstar.pred))
+as.stats2011 = as.df %>% filter(Yr == 2011) %>% arrange(desc(allstar.pred))
+as.stats2010 = as.df %>% filter(Yr == 2010) %>% arrange(desc(allstar.pred))
+
+as.stats2009 = as.df %>% filter(Yr == 2009) %>% arrange(desc(allstar.pred))
+as.stats2008 = as.df %>% filter(Yr == 2008) %>% arrange(desc(allstar.pred))
+as.stats2007 = as.df %>% filter(Yr == 2007) %>% arrange(desc(allstar.pred))
+as.stats2006 = as.df %>% filter(Yr == 2006) %>% arrange(desc(allstar.pred))
+as.stats2005 = as.df %>% filter(Yr == 2005) %>% arrange(desc(allstar.pred))
+as.stats2004 = as.df %>% filter(Yr == 2004) %>% arrange(desc(allstar.pred))
+as.stats2003 = as.df %>% filter(Yr == 2003) %>% arrange(desc(allstar.pred))
+as.stats2002 = as.df %>% filter(Yr == 2002) %>% arrange(desc(allstar.pred))
+as.stats2001 = as.df %>% filter(Yr == 2001) %>% arrange(desc(allstar.pred))
+as.stats2000 = as.df %>% filter(Yr == 2000) %>% arrange(desc(allstar.pred))
+
+
+
+
+
+

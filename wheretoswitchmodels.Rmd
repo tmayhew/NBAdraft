@@ -1,0 +1,589 @@
+---
+title: "Redraft Summaries"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+```{r, include=FALSE}
+library(ggpubr)
+library(rvest)
+library(ggplot2)
+library(ggthemes)
+library(dplyr)
+library(formattable)
+
+as.df = read.csv("allstardf.csv")
+as.stats2019 = as.df %>% filter(Yr == 2019) %>% arrange(desc(allstar.pred))
+as.stats2018 = as.df %>% filter(Yr == 2018) %>% arrange(desc(allstar.pred))
+as.stats2017 = as.df %>% filter(Yr == 2017) %>% arrange(desc(allstar.pred))
+as.stats2016 = as.df %>% filter(Yr == 2016) %>% arrange(desc(allstar.pred))
+as.stats2015 = as.df %>% filter(Yr == 2015) %>% arrange(desc(allstar.pred))
+as.stats2014 = as.df %>% filter(Yr == 2014) %>% arrange(desc(allstar.pred))
+as.stats2013 = as.df %>% filter(Yr == 2013) %>% arrange(desc(allstar.pred))
+as.stats2012 = as.df %>% filter(Yr == 2012) %>% arrange(desc(allstar.pred))
+as.stats2011 = as.df %>% filter(Yr == 2011) %>% arrange(desc(allstar.pred))
+as.stats2010 = as.df %>% filter(Yr == 2010) %>% arrange(desc(allstar.pred))
+
+as.stats2009 = as.df %>% filter(Yr == 2009) %>% arrange(desc(allstar.pred))
+as.stats2008 = as.df %>% filter(Yr == 2008) %>% arrange(desc(allstar.pred))
+as.stats2007 = as.df %>% filter(Yr == 2007) %>% arrange(desc(allstar.pred))
+as.stats2006 = as.df %>% filter(Yr == 2006) %>% arrange(desc(allstar.pred))
+as.stats2005 = as.df %>% filter(Yr == 2005) %>% arrange(desc(allstar.pred))
+as.stats2004 = as.df %>% filter(Yr == 2004) %>% arrange(desc(allstar.pred))
+as.stats2003 = as.df %>% filter(Yr == 2003) %>% arrange(desc(allstar.pred))
+as.stats2002 = as.df %>% filter(Yr == 2002) %>% arrange(desc(allstar.pred))
+as.stats2001 = as.df %>% filter(Yr == 2001) %>% arrange(desc(allstar.pred))
+as.stats2000 = as.df %>% filter(Yr == 2000) %>% arrange(desc(allstar.pred))
+
+as.stats1999 = as.df %>% filter(Yr == 1999) %>% arrange(desc(allstar.pred))
+as.stats1998 = as.df %>% filter(Yr == 1998) %>% arrange(desc(allstar.pred))
+as.stats1997 = as.df %>% filter(Yr == 1997) %>% arrange(desc(allstar.pred))
+as.stats1996 = as.df %>% filter(Yr == 1996) %>% arrange(desc(allstar.pred))
+as.stats1995 = as.df %>% filter(Yr == 1995) %>% arrange(desc(allstar.pred))
+
+
+
+dat = read.csv("currentplayers.csv")
+current.pl = dat$Player
+
+```
+
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2019 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2019 = sum(as.stats2019$Player %in% current.pl)/nrow(as.stats2019)
+print(perc.2019)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2019, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2018 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2018 = sum(as.stats2018$Player %in% current.pl)/nrow(as.stats2018)
+print(perc.2018)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2018, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2017 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2017 = sum(as.stats2017$Player %in% current.pl)/nrow(as.stats2017)
+print(perc.2017)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2017, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2016 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2016 = sum(as.stats2016$Player %in% current.pl)/nrow(as.stats2016)
+print(perc.2016)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2016, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2015 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2015 = sum(as.stats2015$Player %in% current.pl)/nrow(as.stats2015)
+print(perc.2015)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2015, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2014 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2014 = sum(as.stats2014$Player %in% current.pl)/nrow(as.stats2014)
+print(perc.2014)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2014, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2013 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2013 = sum(as.stats2013$Player %in% current.pl)/nrow(as.stats2013)
+print(perc.2013)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2013, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2012 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2012 = sum(as.stats2012$Player %in% current.pl)/nrow(as.stats2012)
+print(perc.2012)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2012, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2011 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2011 = sum(as.stats2011$Player %in% current.pl)/nrow(as.stats2011)
+print(perc.2011)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2011, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2010 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2010 = sum(as.stats2010$Player %in% current.pl)/nrow(as.stats2010)
+print(perc.2010)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2010, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+
+## 2009 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2009 = sum(as.stats2009$Player %in% current.pl)/nrow(as.stats2009)
+print(perc.2009)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2009, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2008 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2008 = sum(as.stats2008$Player %in% current.pl)/nrow(as.stats2008)
+print(perc.2008)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2008, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2007 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2007 = sum(as.stats2007$Player %in% current.pl)/nrow(as.stats2007)
+print(perc.2007)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2007, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2006 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2006 = sum(as.stats2006$Player %in% current.pl)/nrow(as.stats2006)
+print(perc.2006)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2006, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2005 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2005 = sum(as.stats2005$Player %in% current.pl)/nrow(as.stats2005)
+print(perc.2005)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2005, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2004 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2004 = sum(as.stats2004$Player %in% current.pl)/nrow(as.stats2004)
+print(perc.2004)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2004, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2003 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2003 = sum(as.stats2003$Player %in% current.pl)/nrow(as.stats2003)
+print(perc.2003)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2003, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2002 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2002 = sum(as.stats2002$Player %in% current.pl)/nrow(as.stats2002)
+print(perc.2002)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2002, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2001 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2001 = sum(as.stats2001$Player %in% current.pl)/nrow(as.stats2001)
+print(perc.2001)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2001, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2000 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.2000 = sum(as.stats2000$Player %in% current.pl)/nrow(as.stats2000)
+print(perc.2000)
+
+```
+
+```{r, echo = F}
+
+head(as.stats2000, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+
+## 1999 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.1999 = sum(as.stats1999$Player %in% current.pl)/nrow(as.stats1999)
+print(perc.1999)
+
+```
+
+```{r, echo = F}
+
+head(as.stats1999, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1998 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.1998 = sum(as.stats1998$Player %in% current.pl)/nrow(as.stats1998)
+print(perc.1998)
+
+```
+
+```{r, echo = F}
+
+head(as.stats1998, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1997 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.1997 = sum(as.stats1997$Player %in% current.pl)/nrow(as.stats1997)
+print(perc.1997)
+
+```
+
+```{r, echo = F}
+
+head(as.stats1997, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1996 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.1996 = sum(as.stats1996$Player %in% current.pl)/nrow(as.stats1996)
+print(perc.1996)
+
+```
+
+```{r, echo = F}
+
+head(as.stats1996, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1995 Draft
+
+Percent of players from this draft list who played in 2020:
+```{r, echo = F}
+perc.1995 = sum(as.stats1995$Player %in% current.pl)/nrow(as.stats1995)
+print(perc.1995)
+
+```
+
+```{r, echo = F}
+
+head(as.stats1995, 30) %>% select(Player, WS, VORP, allstar.pred, allstar)
+
+```
+
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## Cluster Analysis
+
+This is a graph of the percentage of players from each draft class who are active. To make the process of choosing cutoffs for groups to model easier, we will use K-means clustering on these percentages and decide which number of groups is the most appropriate.
+
+&nbsp;
+&nbsp;
+
+```{r, echo = F}
+year = seq(1995, 2019, by=1)
+percent = c(perc.1995, perc.1996, perc.1997, perc.1998, perc.1999,
+            perc.2000, perc.2001, perc.2002, perc.2003, perc.2004,
+            perc.2005, perc.2006, perc.2007, perc.2008, perc.2009,
+            perc.2010, perc.2011, perc.2012, perc.2013, perc.2014,
+            perc.2015, perc.2016, perc.2017, perc.2018, perc.2019)
+perc.df = cbind.data.frame(year, percent)
+ggplot(data = perc.df, aes(x = year, y = percent)) + geom_point() + theme_bw() + geom_bar(stat = "identity", width = I(1/12)) + scale_x_continuous("Draft Class") + scale_y_continuous("Percent in NBA (2020)")
+
+
+
+```
+
+```{r, echo = F}
+# Clustering
+set.seed(1)
+kmeans_2 = kmeans(perc.df[2],centers=2, nstart = 10, iter.max = 10)
+kmeans_3 = kmeans(perc.df[2],centers=3, nstart = 10, iter.max = 10)
+kmeans_4 = kmeans(perc.df[2],centers=4, nstart = 10, iter.max = 10)
+kmeans_5 = kmeans(perc.df[2],centers=5, nstart = 10, iter.max = 10)
+perc.df1 = cbind.data.frame(perc.df, p2 = kmeans_2$cluster, p3 = kmeans_3$cluster, p4 = kmeans_4$cluster, p5 = kmeans_5$cluster)
+
+pl1 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_point(aes(color = as.factor(p2))) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Two Groups") + geom_vline(xintercept = 2010.5, linetype = "dashed", color = "grey30")
+
+pl2 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_point(aes(color = as.factor(p3))) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Three Groups") + geom_vline(xintercept = c(2014.5, 2007.5), linetype = "dashed", color = "grey30")
+
+pl3 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_point(aes(color = as.factor(p4))) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Four Groups") + geom_vline(xintercept = c(2016.5, 2010.5, 2005.5), linetype = "dashed", color = "grey30")
+
+pl4 = ggplot(data = perc.df1, aes(x = year, y = percent)) + geom_point(aes(color = as.factor(p5))) + theme_bw() + scale_x_continuous("Draft Class", breaks = seq(1995, 2015, by = 5)) + scale_y_continuous("Percent in NBA (2020)") + theme(legend.position = "none") + ggtitle("Split into Five Groups") + geom_vline(xintercept = c(2016.5, 2010.5, 2005.5, 2013.5), linetype = "dashed", color = "grey30")
+
+ggarrange(pl1, pl2, pl3, pl4, ncol = 2, nrow = 2)
+
+```
+
+&nbsp;
+&nbsp;
+
+
+Five Groups | Four Groups | Three Groups | Two Groups
+------------- | ------------- | ------------- | -------------
+Group 1: 1995-2005 | Group 1: 1995-2005 | Group 1: 1995-2007 | Group 1: 1995-2010 
+Group 2: 2006-2010 | Group 2: 2006-2010 | Group 2: 2008-2014 | Group 2: 2011-2019
+Group 3: 2011-2013 | Group 3: 2011-2016 | Group 3: 2015-2019 
+Group 4: 2014-2016 | Group 4: 2016-2019
+Group 5: 2017-2019 |
+ 
