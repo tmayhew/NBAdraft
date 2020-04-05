@@ -1,5 +1,5 @@
 #cor-plot
-df1.numeric <- select(df1, -Tm, -Yr, -conf)
+df1.numeric <- select(df1, -Tm, -Yr, -college)
 marmad.cor1 <- data.frame(abs(cor(df1.numeric)[,"marmad"]))
 colnames(marmad.cor1) <- "cor"
 marmad.cor1$var <- rownames(marmad.cor1)

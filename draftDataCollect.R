@@ -333,3 +333,56 @@ stats1997 = add_allstar(stats1997) %>% arrange(desc(allstar))
 stats1996 = add_allstar(stats1996) %>% arrange(desc(allstar))
 stats1995 = add_allstar(stats1995) %>% arrange(desc(allstar))
 
+df = rbind.data.frame(stats2019, stats2018, stats2017, stats2016, stats2015, 
+                      stats2014, stats2013, stats2012, stats2011, stats2010,
+                      stats2009, stats2008, stats2007, stats2006, stats2005,
+                      stats2004, stats2003, stats2002, stats2001, stats2000,
+                      stats1999, stats1998, stats1997, stats1996, stats1995)
+#cor-plot
+df.numeric <- select(df, -Tm, -Yrs, -College, -Player, -Yr)
+draft.cor1 <- data.frame(abs(cor(df.numeric)[,"allstar"]))
+colnames(draft.cor1) <- "cor"
+draft.cor1$var <- rownames(draft.cor1)
+mm.cor1 <- select(arrange(draft.cor1, desc(cor)), var, cor)
+mm.cor1 <- mm.cor1[2:nrow(mm.cor1),]
+pl1 = ggplot(data=mm.cor1, aes(x=reorder(var, cor), y=cor)) + geom_bar(stat = "identity", width = I(1/8), position = position_dodge(width=0.2)) + coord_flip() + scale_x_discrete("Variable") + theme_clean() + scale_y_continuous("Absolute Value of Correlation", breaks = seq(0, 0.60, by = 0.10)) + ggtitle("Variable Correlation", subtitle = "Correlation with All Star Appearences")
+
+aic <- vector()
+
+fit1 <- glm(allstar ~ VORP, data = df)
+aic[1] <- fit1$aic
+
+fit2 <- glm(allstar ~ VORP + WS, data = df)
+aic[2] <- fit2$aic
+
+fit3 <- glm(allstar ~ VORP + WS + PTS, data = df)
+aic[3] <- fit3$aic
+
+fit4 <- glm(allstar ~ VORP + WS + PTS + AST, data = df)
+aic[4] <- fit4$aic
+
+fit5 <- glm(allstar ~ VORP + WS + PTS + AST + MP, data = df)
+aic[5] <- fit5$aic
+
+fit6 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB, data = df)
+aic[6] <- fit6$aic
+
+fit7 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG, data = df)
+aic[7] <- fit7$aic
+
+fit8 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + G, data = df)
+aic[8] <- fit8$aic
+
+# Games variable brought AIC back up
+
+fit9 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG, data = df)
+aic[9] <- fit9$aic
+
+aic.val <- data.frame(aic)
+aic.val$model <- seq(1, nrow(aic.val))
+aic.val$optimal <- ifelse(aic.val$aic == min(aic.val$aic), "Optimal Point", "")
+
+print(aic.val)
+ggplot(data=aic.val, aes(x=model, y=aic)) + geom_line(linetype = "dashed") + geom_point(aes(color = optimal)) + 
+  theme_bw() + scale_x_continuous("Model", breaks = seq(1,length(aic.val$model))) + 
+  scale_y_continuous("AIC", breaks = seq(600, 1600, by=100)) + theme(legend.position = "none") + scale_color_manual(values = c("black", "red3")) + ggtitle("AIC: Measuring Goodness of Fit for each Model")
