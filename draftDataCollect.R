@@ -421,30 +421,7 @@ summary(lm.model)$coefficients[,"Estimate"]
 # Preliminary Assessment of Predicted All Star Appearances
 allstar.pred = predict(lm.model, df)
 as.df = cbind.data.frame(df, allstar.pred)
-write.csv(as.df, file = "allstardf.csv")
-
-
-as.stats2019 = as.df %>% filter(Yr == 2019) %>% arrange(desc(allstar.pred))
-as.stats2018 = as.df %>% filter(Yr == 2018) %>% arrange(desc(allstar.pred))
-as.stats2017 = as.df %>% filter(Yr == 2017) %>% arrange(desc(allstar.pred))
-as.stats2016 = as.df %>% filter(Yr == 2016) %>% arrange(desc(allstar.pred))
-as.stats2015 = as.df %>% filter(Yr == 2015) %>% arrange(desc(allstar.pred))
-as.stats2014 = as.df %>% filter(Yr == 2014) %>% arrange(desc(allstar.pred))
-as.stats2013 = as.df %>% filter(Yr == 2013) %>% arrange(desc(allstar.pred))
-as.stats2012 = as.df %>% filter(Yr == 2012) %>% arrange(desc(allstar.pred))
-as.stats2011 = as.df %>% filter(Yr == 2011) %>% arrange(desc(allstar.pred))
-as.stats2010 = as.df %>% filter(Yr == 2010) %>% arrange(desc(allstar.pred))
-
-as.stats2009 = as.df %>% filter(Yr == 2009) %>% arrange(desc(allstar.pred))
-as.stats2008 = as.df %>% filter(Yr == 2008) %>% arrange(desc(allstar.pred))
-as.stats2007 = as.df %>% filter(Yr == 2007) %>% arrange(desc(allstar.pred))
-as.stats2006 = as.df %>% filter(Yr == 2006) %>% arrange(desc(allstar.pred))
-as.stats2005 = as.df %>% filter(Yr == 2005) %>% arrange(desc(allstar.pred))
-as.stats2004 = as.df %>% filter(Yr == 2004) %>% arrange(desc(allstar.pred))
-as.stats2003 = as.df %>% filter(Yr == 2003) %>% arrange(desc(allstar.pred))
-as.stats2002 = as.df %>% filter(Yr == 2002) %>% arrange(desc(allstar.pred))
-as.stats2001 = as.df %>% filter(Yr == 2001) %>% arrange(desc(allstar.pred))
-as.stats2000 = as.df %>% filter(Yr == 2000) %>% arrange(desc(allstar.pred))
+write.csv(df, file = "allstardf.csv")
 
 
 
