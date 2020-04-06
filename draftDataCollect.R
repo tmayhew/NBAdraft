@@ -3,6 +3,7 @@ library(ggplot2)
 library(ggthemes)
 library(dplyr)
 library(formattable)
+
 #'%!in%' <- function(x,y)!('%in%'(x,y))
 
 scrape_cbbplayers = function(given_year = 2019){
@@ -421,7 +422,10 @@ summary(lm.model)$coefficients[,"Estimate"]
 # Preliminary Assessment of Predicted All Star Appearances
 allstar.pred = predict(lm.model, df)
 as.df = cbind.data.frame(df, allstar.pred)
+
+write.csv(as.df, file = "allstardfpred.csv")
 write.csv(df, file = "allstardf.csv")
+
 
 
 
