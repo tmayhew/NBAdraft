@@ -446,7 +446,7 @@ as.stats2002 = as.df %>% filter(Yr == 2002) %>% arrange(desc(allstar.pred))
 as.stats2001 = as.df %>% filter(Yr == 2001) %>% arrange(desc(allstar.pred))
 as.stats2000 = as.df %>% filter(Yr == 2000) %>% arrange(desc(allstar.pred))
 
-
+# https://zoom.us/j/968660391?pwd=M1NqMnNJaXhOYjNxek9MUDhxTmZIZz09
 
 
 
