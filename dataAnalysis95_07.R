@@ -5,7 +5,7 @@ library(dplyr)
 library(formattable)
 library(gam)
 
-dat = read.csv("allstardf.csv") %>% filter(Yr < 2008) %>% filter(WS > 0.01 & VORP > 0.01)
+dat = read.csv("allstardf.csv") %>% filter(Yr < 2008) %>% filter(WS > 0.5 & VORP > 0.5)
 summary(dat$Yr)
 
 # Correlation Plot
@@ -106,12 +106,13 @@ lm.model = lm(allstar ~ VORP + PTS + BPM + PPG + MP + WS.48 + TRB + AST + MPG, d
   df.sse = c(sse.gam, sse.lm)
   df.sse = data.frame(df.sse)
   df.sse$Model = c("GAM", "LM")
-  ggplot(data = df.sse, aes(x = Model, y = df.sse)) + geom_bar(stat = "identity", width = I(1/8), color = "black", fill = "steelblue") + theme_clean() + scale_y_continuous("SSE")
+  ggplot(data = df.sse, aes(x = Model, y = df.sse)) + geom_bar(stat = "identity", width = I(1/8), color = "black", fill = "steelblue", alpha = I(3/4)) + theme_clean() + scale_y_continuous("SSE")
   
 
 # Apply Model to Predictions
   allstar.pred = predict(gam.model, dat)
   as.df = cbind.data.frame(dat, allstar.pred)
+
 ##################################################################
   as.df %>% filter(Yr == 2007) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
   as.df %>% filter(Yr == 2006) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
