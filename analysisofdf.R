@@ -1,0 +1,11 @@
+library(rvest)
+library(ggplot2)
+library(ggthemes)
+library(tidyverse)
+library(nbastatR)
+df = read.csv("finaldf.csv")[,-1]
+dat1 = df %>% filter(Yr < 2008); summary(dat1$Yr)
+dat2 = df %>% filter(Yr > 2007 & Yr < 2015); summary(dat2$Yr)
+dat3 = df %>% filter(Yr > 2014); summary(dat3$Yr)
+
+

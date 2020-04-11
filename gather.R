@@ -7,7 +7,6 @@ library(nbastatR)
 
 dat = read.csv("allstardf.csv")
 summary(dat$Yr)
-
 stats2019 = dat[,-1] %>% filter(Yr == 2019) %>% arrange(desc(MP))
 stats2019 = stats2019[1:30,]
 stats2019$Player = as.character(stats2019$Player)
@@ -84,7 +83,15 @@ stats1995 = dat[,-1] %>% filter(Yr == 1995) %>% arrange(desc(MP))
 stats1995 = stats1995[1:30,]
 stats1995$Player = as.character(stats1995$Player)
 
-scrape_nbapl = function(df){
+statsdf = rbind.data.frame(stats2019, stats2018, stats2017, stats2016, stats2015, 
+                           stats2014, stats2013, stats2012, stats2011, stats2010,
+                           stats2009, stats2008, stats2007, stats2006, stats2005, 
+                           stats2004, stats2003, stats2002, stats2001, stats2000,
+                           stats1999, stats1998, stats1997, stats1996, stats1995)
+write.csv(statsdf, "statsdf.csv")
+                           
+
+"scrape_nbapl = function(df){
   new.df = data.frame()
   for (i in 1:nrow(df)){
     link = paste(df[i, 2])
@@ -150,72 +157,139 @@ scrape_nbapl = function(df){
     new.df[i,1:27] = cbind.data.frame(df[i,1:2], f.df)
   }
   return(new.df %>% select(-Player.1))
-}
+}"
 
 # 1995 #################################################################################################################
 df1995 = read.csv("sc.1995df.csv")
-head(df1995 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 30)
+df1995 = df1995 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df1995 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 1996 #################################################################################################################
 df1996 = read.csv("sc.1996df.csv")
-head(df1996 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 30)
+df1996 = df1996 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df1996 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 1997 #################################################################################################################
 df1997 = read.csv("sc.1997df.csv")
-head(df1997 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 30)
+df1997 = df1997 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df1997 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 1998 #################################################################################################################
 df1998 = read.csv("sc.1998df.csv")
-head(df1998 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 30)
+df1998 = df1998 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df1998 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 1999 #################################################################################################################
 df1999 = read.csv("sc.1999df.csv")
-df1999 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df1999 = df1999 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df1999 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2000 #################################################################################################################
 df2000 = read.csv("sc.2000df.csv")
-df2000 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2000 = df2000 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2000 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2001 #################################################################################################################
 df2001 = read.csv("sc.2001df.csv")
-df2001 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2001 = df2001 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2001 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2002 #################################################################################################################
 df2002 = read.csv("sc.2002df.csv")
-df2002 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2002 = df2002 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2002 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2003 #################################################################################################################
 df2003 = read.csv("sc.2003df.csv")
-df2003 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2003 = df2003 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2003 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2004 #################################################################################################################
 df2004 = read.csv("sc.2004df.csv")
-df2004 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2004 = df2004 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2004 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2005 #################################################################################################################
 df2005 = read.csv("sc.2005df.csv")
-df2005 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2005 = df2005 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2005 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2006 #################################################################################################################
 df2006 = read.csv("sc.2006df.csv")
-df2006 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2006 = df2006 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2006 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2007 #################################################################################################################
 df2007 = read.csv("sc.2007df.csv")
-df2007 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2007 = df2007 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2007 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2008 #################################################################################################################
 df2008 = read.csv("sc.2008df.csv")
-df2008 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2008 = df2008 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2008 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2009 #################################################################################################################
 df2009 = read.csv("sc.2009df.csv")
-df2009 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2009 = df2009 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2009 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
 # 2010 #################################################################################################################
 df2010 = read.csv("sc.2010df.csv")
-df2010 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+df2010 = df2010 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2010 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
 
+# 2011 #################################################################################################################
+df2011 = read.csv("sc.2011df.csv")
+df2011 = df2011 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2011 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+# 2012 #################################################################################################################
+df2012 = read.csv("sc.2012df.csv")
+df2012 = df2012 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2012 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+# 2013 #################################################################################################################
+df2013 = read.csv("sc.2013df.csv")
+df2013 = df2013 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2013 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+# 2014 #################################################################################################################
+df2014 = read.csv("sc.2014df.csv")
+df2014 = df2014 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2014 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+# 2015 #################################################################################################################
+df2015 = read.csv("sc.2015df.csv")
+df2015 = df2015 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2015 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+# 2016 #################################################################################################################
+df2016 = read.csv("sc.2016df.csv")
+df2016 = df2016 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2016 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+# 2017 #################################################################################################################
+df2017 = read.csv("sc.2017df.csv")
+df2017 = df2017 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2017 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+# 2018 #################################################################################################################
+df2018 = read.csv("sc.2018df.csv")
+df2018 = df2018 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2018 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+# 2019 #################################################################################################################
+df2019 = read.csv("sc.2019df.csv")
+df2019 = df2019 %>% mutate(PER = ((FG*85.910) + (STL*53.897) + (X3P*51.757) + (FT*46.845) + (BLK*39.190) + (ORB*39.190) + (AST*34.677) + (DRB*14.707) - (PF*17.174) - ((FTA-FT)*20.091) - ((FGA-FG)*39.190) - (TOV*53.897)) * (1/MP))
+df2019 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV, PER) %>% arrange(desc(PER))
+
+primedf = rbind.data.frame(df1995, df1996, df1997, df1998, df1999,
+                            df2000, df2001, df2002, df2003, df2004,
+                            df2005, df2006, df2007, df2008, df2009,
+                            df2010, df2011, df2012, df2013, df2014,
+                            df2015, df2016, df2017, df2018, df2019)
+write.csv(primedf, "primedf.csv")
 
 
 
