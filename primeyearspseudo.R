@@ -3,6 +3,7 @@ df = bref_bios(players = c(statsYEAR$Player))
 df = df %>% filter(nameTable == "Transactions")
 df = df %>% select(namePlayerBREF, urlPlayerBioBREF)
 write.csv(df, "YEARplayers.csv")
+
 dfYEAR = read.csv("YEARplayers.csv") %>% select(namePlayerBREF, urlPlayerBioBREF)
 names(dfYEAR) = c("Player", "BREF")
 dfYEAR$Player = as.character(dfYEAR$Player)
@@ -17,4 +18,5 @@ sc.YEARdf = scrape_nbapl(dfYEAR)
 write.csv(sc.YEARdf, "sc.YEARdf.csv")
 
 dfYEAR = read.csv("sc.YEARdf.csv")
-head(dfYEAR %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 5)
+dfYEAR %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+

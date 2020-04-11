@@ -5,34 +5,83 @@ library(tidyverse)
 library(nbastatR)
 '%!in%' <- function(x,y)!('%in%'(x,y))
 
-dat = read.csv("allstardf.csv") %>% filter(Yr < 2008) %>% filter(WS > 0.1 & VORP > 0.1 | allstar == 1)
+dat = read.csv("allstardf.csv")
 summary(dat$Yr)
 
-stats2007 = dat[,-1] %>% filter(Yr == 2007) %>% arrange(desc(WS))
+stats2019 = dat[,-1] %>% filter(Yr == 2019) %>% arrange(desc(MP))
+stats2019 = stats2019[1:30,]
+stats2019$Player = as.character(stats2019$Player)
+stats2018 = dat[,-1] %>% filter(Yr == 2018) %>% arrange(desc(MP))
+stats2018 = stats2018[1:30,]
+stats2018$Player = as.character(stats2018$Player)
+stats2017 = dat[,-1] %>% filter(Yr == 2017) %>% arrange(desc(MP))
+stats2017 = stats2017[1:30,]
+stats2017$Player = as.character(stats2017$Player)
+stats2016 = dat[,-1] %>% filter(Yr == 2016) %>% arrange(desc(MP))
+stats2016 = stats2016[1:30,]
+stats2016$Player = as.character(stats2016$Player)
+stats2015 = dat[,-1] %>% filter(Yr == 2015) %>% arrange(desc(MP))
+stats2015 = stats2015[1:30,]
+stats2015$Player = as.character(stats2015$Player)
+stats2014 = dat[,-1] %>% filter(Yr == 2014) %>% arrange(desc(MP))
+stats2014 = stats2014[1:30,]
+stats2014$Player = as.character(stats2014$Player)
+stats2013 = dat[,-1] %>% filter(Yr == 2013) %>% arrange(desc(MP))
+stats2013 = stats2013[1:30,]
+stats2013$Player = as.character(stats2013$Player)
+stats2012 = dat[,-1] %>% filter(Yr == 2012) %>% arrange(desc(MP))
+stats2012 = stats2012[1:30,]
+stats2012$Player = as.character(stats2012$Player)
+stats2011 = dat[,-1] %>% filter(Yr == 2011) %>% arrange(desc(MP))
+stats2011 = stats2011[1:30,]
+stats2011$Player = as.character(stats2011$Player)
+stats2010 = dat[,-1] %>% filter(Yr == 2010) %>% arrange(desc(MP))
+stats2010 = stats2010[1:30,]
+stats2010$Player = as.character(stats2010$Player)
+stats2009 = dat[,-1] %>% filter(Yr == 2009) %>% arrange(desc(MP))
+stats2009 = stats2009[1:30,]
+stats2009$Player = as.character(stats2009$Player)
+stats2008 = dat[,-1] %>% filter(Yr == 2008) %>% arrange(desc(MP))
+stats2008 = stats2008[1:30,]
+stats2008$Player = as.character(stats2008$Player)
+stats2007 = dat[,-1] %>% filter(Yr == 2007) %>% arrange(desc(MP))
+stats2007 = stats2007[1:30,]
 stats2007$Player = as.character(stats2007$Player)
-stats2006 = dat[,-1] %>% filter(Yr == 2006) %>% arrange(desc(WS))
+stats2006 = dat[,-1] %>% filter(Yr == 2006) %>% arrange(desc(MP))
+stats2006 = stats2006[1:30,]
 stats2006$Player = as.character(stats2006$Player)
-stats2005 = dat[,-1] %>% filter(Yr == 2005) %>% arrange(desc(WS))
+stats2005 = dat[,-1] %>% filter(Yr == 2005) %>% arrange(desc(MP))
+stats2005 = stats2005[1:30,]
 stats2005$Player = as.character(stats2005$Player)
-stats2004 = dat[,-1] %>% filter(Yr == 2004) %>% arrange(desc(WS))
+stats2004 = dat[,-1] %>% filter(Yr == 2004) %>% arrange(desc(MP))
+stats2004 = stats2004[1:30,]
 stats2004$Player = as.character(stats2004$Player)
-stats2003 = dat[,-1] %>% filter(Yr == 2003) %>% arrange(desc(WS))
+stats2003 = dat[,-1] %>% filter(Yr == 2003) %>% arrange(desc(MP))
+stats2003 = stats2003[1:30,]
 stats2003$Player = as.character(stats2003$Player)
-stats2002 = dat[,-1] %>% filter(Yr == 2002) %>% arrange(desc(WS))
+stats2002 = dat[,-1] %>% filter(Yr == 2002) %>% arrange(desc(MP))
+stats2002 = stats2002[1:30,]
 stats2002$Player = as.character(stats2002$Player)
-stats2001 = dat[,-1] %>% filter(Yr == 2001) %>% arrange(desc(WS))
+stats2001 = dat[,-1] %>% filter(Yr == 2001) %>% arrange(desc(MP))
+stats2001 = stats2001[1:30,]
 stats2001$Player = as.character(stats2001$Player)
-stats2000 = dat[,-1] %>% filter(Yr == 2000) %>% arrange(desc(WS))
+stats2000 = dat[,-1] %>% filter(Yr == 2000) %>% arrange(desc(MP))
+stats2000 = stats2000[1:30,]
 stats2000$Player = as.character(stats2000$Player)
-stats1999 = dat[,-1] %>% filter(Yr == 1999) %>% arrange(desc(WS))
+stats1999 = dat[,-1] %>% filter(Yr == 1999) %>% arrange(desc(MP))
+stats1999 = stats1999[1:30,]
 stats1999$Player = as.character(stats1999$Player)
-stats1998 = dat[,-1] %>% filter(Yr == 1998) %>% arrange(desc(WS))
+stats1998 = dat[,-1] %>% filter(Yr == 1998) %>% arrange(desc(MP))
+stats1998 = stats1998[1:30,]
 stats1998$Player = as.character(stats1998$Player)
-stats1997 = dat[,-1] %>% filter(Yr == 1997) %>% arrange(desc(WS))
+stats1997 = dat[,-1] %>% filter(Yr == 1997) %>% arrange(desc(MP))
+stats1997 = stats1997[1:30,]
 stats1997$Player = as.character(stats1997$Player)
-stats1996 = dat[,-1] %>% filter(Yr == 1996) %>% arrange(desc(WS))
+stats1996 = dat[,-1] %>% filter(Yr == 1996) %>% arrange(desc(MP))
+stats1996 = stats1996[1:30,]
 stats1996$Player = as.character(stats1996$Player)
-stats1995 = dat[,-1] %>% filter(Yr == 1995) %>% arrange(desc(WS))
+stats1995 = dat[,-1] %>% filter(Yr == 1995) %>% arrange(desc(MP))
+stats1995 = stats1995[1:30,]
 stats1995$Player = as.character(stats1995$Player)
 
 scrape_nbapl = function(df){
@@ -58,6 +107,15 @@ scrape_nbapl = function(df){
         data[row, col] = as.double((data[row, col]))
       }
     }
+    
+    for (row in 1:nrow(data)){
+      for (j in c(12, 15, 18, 19, 22)){
+        if (is.na(data[row, j])){
+          data[row, j] = 0
+        }
+      }
+    }
+    
     
     data = na.omit(data)
     data[,7:ncol(data)] = data.frame(lapply(data[,7:ncol(data)],as.numeric))
@@ -95,28 +153,68 @@ scrape_nbapl = function(df){
 }
 
 # 1995 #################################################################################################################
-df1995 = read.csv("sc.1995df.csv")[,-1]
-head(df1995 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 5)
+df1995 = read.csv("sc.1995df.csv")
+head(df1995 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 30)
 
 # 1996 #################################################################################################################
-df1996 = read.csv("sc.1996df.csv")[,-1]
-head(df1996 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 5)
+df1996 = read.csv("sc.1996df.csv")
+head(df1996 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 30)
 
 # 1997 #################################################################################################################
-df1997 = read.csv("sc.1997df.csv")[,-1]
-head(df1997 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 5)
+df1997 = read.csv("sc.1997df.csv")
+head(df1997 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 30)
 
 # 1998 #################################################################################################################
 df1998 = read.csv("sc.1998df.csv")
-head(df1998 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 5)
+head(df1998 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 30)
 
 # 1999 #################################################################################################################
 df1999 = read.csv("sc.1999df.csv")
-head(df1999 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 5)
+df1999 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
 
 # 2000 #################################################################################################################
 df2000 = read.csv("sc.2000df.csv")
-head(df2000 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS)), 5)
+df2000 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2001 #################################################################################################################
+df2001 = read.csv("sc.2001df.csv")
+df2001 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2002 #################################################################################################################
+df2002 = read.csv("sc.2002df.csv")
+df2002 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2003 #################################################################################################################
+df2003 = read.csv("sc.2003df.csv")
+df2003 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2004 #################################################################################################################
+df2004 = read.csv("sc.2004df.csv")
+df2004 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2005 #################################################################################################################
+df2005 = read.csv("sc.2005df.csv")
+df2005 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2006 #################################################################################################################
+df2006 = read.csv("sc.2006df.csv")
+df2006 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2007 #################################################################################################################
+df2007 = read.csv("sc.2007df.csv")
+df2007 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2008 #################################################################################################################
+df2008 = read.csv("sc.2008df.csv")
+df2008 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2009 #################################################################################################################
+df2009 = read.csv("sc.2009df.csv")
+df2009 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
+
+# 2010 #################################################################################################################
+df2010 = read.csv("sc.2010df.csv")
+df2010 %>% select(Player, G, PTS, TRB, AST, STL, BLK, TOV) %>% arrange(desc(PTS))
 
 
 

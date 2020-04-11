@@ -338,6 +338,7 @@ df = rbind.data.frame(stats2019, stats2018, stats2017, stats2016, stats2015,
                       stats2009, stats2008, stats2007, stats2006, stats2005,
                       stats2004, stats2003, stats2002, stats2001, stats2000,
                       stats1999, stats1998, stats1997, stats1996, stats1995)
+df
 
 # Correlation Plot
 df.numeric <- select(df, -Tm, -Yrs, -College, -Player, -Yr)
