@@ -4,9 +4,11 @@ library(ggthemes)
 library(dplyr)
 library(formattable)
 library(gam)
+library(tidyr)
 
-dat = read.csv("allstardf.csv") %>% filter(Yr < 2008) %>% filter(WS > 0.5 & VORP > 0.5)
+dat = read.csv("allstardf.csv") %>% filter(Yr < 2008) %>% filter(WS > 0.1 & VORP > 0.1 | allstar == 1)
 summary(dat$Yr)
+dat[,6:21] = scale(dat[,6:21])
 
 # Correlation Plot
   dat.numeric <- select(dat, -Tm, -Yrs, -College, -Player, -Yr)
@@ -84,20 +86,20 @@ summary(dat$Yr)
   anova(lm.model)
   summary(lm.model)$coefficients[,"Estimate"]
 
-# Observing Spline Fit: VARIABLE
-  gam.model1 = gam(allstar ~ s(VARIABLE, 2))
-  # VARIABLE
-  df1 = cbind.data.frame(X = dat$VARIABLE, Y = dat$allstar, Type = "Real")
-  tobind = cbind.data.frame(X = dat$VARIABLE, Y = gam.model1$fitted.values, Type = "Predicted")
+# Observing Spline Fit: VORP
+  gam.model1 = gam(allstar ~ s(VORP, 3), data = dat)
+  # VORP
+  df1 = cbind.data.frame(X = dat$VORP, Y = dat$allstar, Type = "Real")
+  tobind = cbind.data.frame(X = dat$VORP, Y = gam.model1$fitted.values, Type = "Predicted")
   df2 = rbind.data.frame(df1, tobind)
   ggplot(data = subset(df2, Type == "Real"), aes(x = X, y = Y)) + geom_point(alpha = I(2/5)) + 
     theme_bw() + geom_smooth(data = subset(df2, Type = "Predicted"), method = "loess", 
                              linetype = "dashed", formula = "y~x", se = F) + 
-    scale_x_continuous("VARIABLE") + scale_y_continuous("All Stars")
+    scale_x_continuous("VORP") + scale_y_continuous("All Stars")
 
 
 # Final GAM Model
-gam.model = gam(allstar ~ s(VORP, 2) + s(WS, 3) + s(PTS, 3) + s(MP, 4) + s(TRB, 3) + s(AST, 3), data = dat)
+gam.model = gam(allstar ~ s(VORP, 3) + s(WS, 3) + s(PTS, 3) + s(MP, 4) + s(TRB, 3) + s(AST, 3), data = dat)
 lm.model = lm(allstar ~ VORP + PTS + BPM + PPG + MP + WS.48 + TRB + AST + MPG, data = dat)
 
 ## SSE:
@@ -113,18 +115,39 @@ lm.model = lm(allstar ~ VORP + PTS + BPM + PPG + MP + WS.48 + TRB + AST + MPG, d
   allstar.pred = predict(gam.model, dat)
   as.df = cbind.data.frame(dat, allstar.pred)
 
+as.draftyear = 
+  as.df %>% 
+    group_by(Yr) %>% 
+    summarise(
+      allstar = sum(allstar),
+      pred.allstar = sum(allstar.pred)
+    )
+
+ggplot(data = as.draftyear2, aes(x = Yr, y = Value)) + geom_bar(stat = "identity", width = I(1/4), alpha = I(3/4), color = "black", aes(fill = Type), position = "dodge") + scale_x_continuous("Draft Year", breaks = seq(1995, 2007, by=1)) + scale_y_continuous("Total All Star Appearances") + theme_clean() + ggtitle("Draft Success: Number of All Star Appearances by Draft Year")
+
+as.draftyear2 = 
+  as.draftyear %>% gather(allstar, pred.allstar, -Yr)
+colnames(as.draftyear2) = c("Yr", "Type", "Value")
+
+
+
+
+
+
+
+
 ##################################################################
-  as.df %>% filter(Yr == 2007) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 2006) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 2005) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 2004) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 2003) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 2002) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 2001) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 2000) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 1999) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 1998) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 1997) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 1996) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
-  as.df %>% filter(Yr == 1995) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 2007) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 2006) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 2005) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 2004) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 2003) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 2002) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 2001) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 2000) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 1999) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 1998) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 1997) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 1996) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
+  as.df %>% filter(Yr == 1995) %>% arrange(desc(allstar.pred)) %>% mutate(redraft = row_number(-allstar.pred)) %>% select(redraft, Tm, Player, College, WS, VORP, allstar, allstar.pred)
   

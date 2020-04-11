@@ -4,7 +4,7 @@ library(ggthemes)
 library(dplyr)
 library(formattable)
 
-'%!in%' <- function(x,y)!('%in%'(x,y))
+#'%!in%' <- function(x,y)!('%in%'(x,y))
 
 scrape_cbbplayers = function(given_year = 2019){
   year = paste(given_year)
@@ -245,30 +245,30 @@ stats1996$Player[which(stats1996$Player %in% as.app.df$as.names)]
 stats1995$Player[which(stats1995$Player %in% as.app.df$as.names)]
 
 consistency_list = c(stats2019$Player[which(stats2019$Player %in% as.app.df$as.names)],
-                    stats2018$Player[which(stats2018$Player %in% as.app.df$as.names)],
-                    stats2017$Player[which(stats2017$Player %in% as.app.df$as.names)],
-                    stats2016$Player[which(stats2016$Player %in% as.app.df$as.names)],
-                    stats2015$Player[which(stats2015$Player %in% as.app.df$as.names)],
-                    stats2014$Player[which(stats2014$Player %in% as.app.df$as.names)],
-                    stats2013$Player[which(stats2013$Player %in% as.app.df$as.names)],
-                    stats2012$Player[which(stats2012$Player %in% as.app.df$as.names)],
-                    stats2011$Player[which(stats2011$Player %in% as.app.df$as.names)],
-                    stats2010$Player[which(stats2010$Player %in% as.app.df$as.names)],
-                    stats2009$Player[which(stats2009$Player %in% as.app.df$as.names)],
-                    stats2008$Player[which(stats2008$Player %in% as.app.df$as.names)],
-                    stats2007$Player[which(stats2007$Player %in% as.app.df$as.names)],
-                    stats2006$Player[which(stats2006$Player %in% as.app.df$as.names)],
-                    stats2005$Player[which(stats2005$Player %in% as.app.df$as.names)],
-                    stats2004$Player[which(stats2004$Player %in% as.app.df$as.names)],
-                    stats2003$Player[which(stats2003$Player %in% as.app.df$as.names)],
-                    stats2002$Player[which(stats2002$Player %in% as.app.df$as.names)],
-                    stats2001$Player[which(stats2001$Player %in% as.app.df$as.names)],
-                    stats2000$Player[which(stats2000$Player %in% as.app.df$as.names)],
-                    stats1999$Player[which(stats1999$Player %in% as.app.df$as.names)],
-                    stats1998$Player[which(stats1998$Player %in% as.app.df$as.names)],
-                    stats1997$Player[which(stats1997$Player %in% as.app.df$as.names)],
-                    stats1996$Player[which(stats1996$Player %in% as.app.df$as.names)],
-                    stats1995$Player[which(stats1995$Player %in% as.app.df$as.names)])
+                     stats2018$Player[which(stats2018$Player %in% as.app.df$as.names)],
+                     stats2017$Player[which(stats2017$Player %in% as.app.df$as.names)],
+                     stats2016$Player[which(stats2016$Player %in% as.app.df$as.names)],
+                     stats2015$Player[which(stats2015$Player %in% as.app.df$as.names)],
+                     stats2014$Player[which(stats2014$Player %in% as.app.df$as.names)],
+                     stats2013$Player[which(stats2013$Player %in% as.app.df$as.names)],
+                     stats2012$Player[which(stats2012$Player %in% as.app.df$as.names)],
+                     stats2011$Player[which(stats2011$Player %in% as.app.df$as.names)],
+                     stats2010$Player[which(stats2010$Player %in% as.app.df$as.names)],
+                     stats2009$Player[which(stats2009$Player %in% as.app.df$as.names)],
+                     stats2008$Player[which(stats2008$Player %in% as.app.df$as.names)],
+                     stats2007$Player[which(stats2007$Player %in% as.app.df$as.names)],
+                     stats2006$Player[which(stats2006$Player %in% as.app.df$as.names)],
+                     stats2005$Player[which(stats2005$Player %in% as.app.df$as.names)],
+                     stats2004$Player[which(stats2004$Player %in% as.app.df$as.names)],
+                     stats2003$Player[which(stats2003$Player %in% as.app.df$as.names)],
+                     stats2002$Player[which(stats2002$Player %in% as.app.df$as.names)],
+                     stats2001$Player[which(stats2001$Player %in% as.app.df$as.names)],
+                     stats2000$Player[which(stats2000$Player %in% as.app.df$as.names)],
+                     stats1999$Player[which(stats1999$Player %in% as.app.df$as.names)],
+                     stats1998$Player[which(stats1998$Player %in% as.app.df$as.names)],
+                     stats1997$Player[which(stats1997$Player %in% as.app.df$as.names)],
+                     stats1996$Player[which(stats1996$Player %in% as.app.df$as.names)],
+                     stats1995$Player[which(stats1995$Player %in% as.app.df$as.names)])
 
 unique(as.names[which(as.names %!in% consistency_list)])
 
@@ -341,96 +341,4 @@ df = rbind.data.frame(stats2019, stats2018, stats2017, stats2016, stats2015,
 
 # Correlation Plot
 df.numeric <- select(df, -Tm, -Yrs, -College, -Player, -Yr)
-draft.cor1 <- data.frame(abs(cor(df.numeric)[,"allstar"]))
-colnames(draft.cor1) <- "cor"
-draft.cor1$var <- rownames(draft.cor1)
-mm.cor1 <- select(arrange(draft.cor1, desc(cor)), var, cor)
-mm.cor1 <- mm.cor1[2:nrow(mm.cor1),]
-pl1 = ggplot(data=mm.cor1, aes(x=reorder(var, cor), y=cor)) + geom_bar(stat = "identity", width = I(1/8), position = position_dodge(width=0.2)) + coord_flip() + scale_x_discrete("Variable") + theme_clean() + scale_y_continuous("Absolute Value of Correlation", breaks = seq(0, 0.60, by = 0.10)) + ggtitle("Variable Correlation", subtitle = "Correlation with All Star Appearences")
-print(pl1)
-
-# AIC Plot
-aic <- vector()
-
-fit1 <- glm(allstar ~ VORP, data = df)
-aic[1] <- fit1$aic
-
-fit2 <- glm(allstar ~ VORP + WS, data = df)
-aic[2] <- fit2$aic
-
-fit3 <- glm(allstar ~ VORP + WS + PTS, data = df)
-aic[3] <- fit3$aic
-
-fit4 <- glm(allstar ~ VORP + WS + PTS + AST, data = df)
-aic[4] <- fit4$aic
-
-fit5 <- glm(allstar ~ VORP + WS + PTS + AST + MP, data = df)
-aic[5] <- fit5$aic
-
-fit6 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB, data = df)
-aic[6] <- fit6$aic
-
-fit7 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG, data = df)
-aic[7] <- fit7$aic
-
-fit8 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + G, data = df)
-aic[8] <- fit8$aic
-
-# Games variable brought AIC back up
-
-fit9 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG, data = df)
-aic[9] <- fit9$aic
-
-fit10 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + APG, data = df)
-aic[10] <- fit10$aic
-
-# Assists per game variable brought AIC up
-
-fit11 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM, data = df)
-aic[11] <- fit11$aic
-
-fit12 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG, data = df)
-aic[12] <- fit12$aic
-
-fit13 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG + WS.48, data = df)
-aic[13] <- fit13$aic
-
-fit14 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG + FT., data = df)
-aic[14] <- fit14$aic
-
-fit15 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG + FG., data = df)
-aic[15] <- fit15$aic
-
-fit16 <- glm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG + X3P., data = df)
-aic[16] <- fit16$aic
-
-
-aic.val <- data.frame(aic)
-aic.val$model <- seq(1, nrow(aic.val))
-aic.val$optimal <- ifelse(aic.val$aic == min(aic.val$aic), "Optimal Point", "")
-
-
-print(aic.val)
-ggplot(data=aic.val, aes(x=model, y=aic)) + geom_line(linetype = "dashed") + geom_point(aes(color = optimal)) + 
-  theme_bw() + scale_x_continuous("Model", breaks = seq(1,length(aic.val$model))) + 
-  scale_y_continuous("AIC", breaks = seq(2600, 3100, by=25)) + theme(legend.position = "none") + scale_color_manual(values = c("black", "red3")) + ggtitle("AIC: Measuring Goodness of Fit for each Model")
-
-# MODEL 12:
-lm.model <- lm(allstar ~ VORP + WS + PTS + AST + MP + TRB + PPG + MPG + BPM + RPG, data = df)
-print(anova(lm.model))
-summary(lm.model)$coefficients[,"Estimate"]
-
-# Preliminary Assessment of Predicted All Star Appearances
-allstar.pred = predict(lm.model, df)
-as.df = cbind.data.frame(df, allstar.pred)
-
-write.csv(as.df, file = "allstardfpred.csv")
-write.csv(df, file = "allstardf.csv")
-
-
-
-
-
-
-
-
+draft.cor1 <- data.frame((cov(df.numeric)))
