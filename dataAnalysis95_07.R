@@ -78,7 +78,6 @@ anova(lm.model)
 summary(lm.model)$coefficients[,"Estimate"]
 
 allstar.pred = predict(lm.model, dat)
-brnn.pred = 
 as.df = cbind.data.frame(dat, allstar.pred)
 
 as.df %>% filter(Yr == 2007) %>% arrange(desc(allstar.pred)) %>% select(Tm, Player, College, WS, VORP, allstar, allstar.pred)
