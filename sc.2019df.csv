@@ -1,0 +1,31 @@
+"","Player","BREF","G","MP","FG","FGA","FG.","X3P","X3PA","X3P.","X2P","X2PA","X2P.","eFG.","FT","FTA","FT.","ORB","DRB","TRB","AST","STL","BLK","TOV","PF","PTS"
+"1","Brandon Clarke","https://www.basketball-reference.com/players/c/clarkbr01.html",50,21.7,5.1,8.2,0.623,0.4,1,0.404,4.7,7.1,0.654,0.648,1.5,1.9,0.785,1.6,4.3,5.8,1.4,0.5,0.8,0.9,1.6,12
+"2","Bruno Fernando","https://www.basketball-reference.com/players/f/fernabr01.html",56,12.7,1.8,3.6,0.518,0.1,0.7,0.135,1.8,2.9,0.605,0.53,0.5,0.9,0.569,1.2,2.3,3.5,0.9,0.3,0.3,0.8,1.9,4.3
+"3","Cam Reddish","https://www.basketball-reference.com/players/r/reddica01.html",58,26.7,3.7,9.6,0.384,1.4,4.3,0.332,2.2,5.2,0.428,0.459,1.7,2.2,0.802,0.6,3.1,3.7,1.5,1.1,0.5,1.7,2.3,10.5
+"4","Cameron Johnson","https://www.basketball-reference.com/players/j/johnsca02.html",49,20.3,2.8,6.6,0.418,1.9,4.7,0.397,0.9,2,0.469,0.558,0.7,0.9,0.761,0.8,2.1,2.9,1.1,0.6,0.3,0.6,1.5,8.1
+"5","Carsen Edwards","https://www.basketball-reference.com/players/e/edwarca01.html",35,9,1.1,3.2,0.327,0.6,1.9,0.309,0.5,1.3,0.356,0.42,0.3,0.4,0.846,0.2,1.1,1.2,0.6,0.3,0.1,0.4,0.9,3
+"6","Coby White","https://www.basketball-reference.com/players/w/whiteco01.html",65,25.8,4.8,12.2,0.394,2,5.8,0.354,2.8,6.4,0.43,0.478,1.6,2,0.791,0.4,3.1,3.5,2.7,0.8,0.1,1.7,1.8,13.2
+"7","Cody Martin","https://www.basketball-reference.com/players/m/martico01.html",48,18.8,1.9,4.3,0.43,0.4,1.6,0.234,1.5,2.7,0.546,0.473,0.9,1.4,0.646,0.8,2.5,3.3,2,0.8,0.2,0.9,1.6,5
+"8","Darius Bazley","https://www.basketball-reference.com/players/b/bazleda01.html",53,17.2,1.7,4.3,0.383,0.6,1.9,0.3,1.1,2.5,0.446,0.448,0.6,0.9,0.681,0.4,3.3,3.7,0.5,0.4,0.7,0.8,0.8,4.5
+"9","Darius Garland","https://www.basketball-reference.com/players/g/garlada01.html",59,30.9,4.7,11.8,0.401,1.8,5,0.355,3,6.8,0.434,0.476,1.1,1.2,0.875,0.5,1.4,1.9,3.9,0.7,0.1,2.6,1.6,12.3
+"10","De'Andre Hunter","https://www.basketball-reference.com/players/h/huntede01.html",63,32,4.4,10.8,0.41,1.7,4.8,0.355,2.7,6,0.454,0.489,1.7,2.3,0.764,0.7,3.8,4.5,1.8,0.7,0.3,1.6,2.9,12.3
+"11","Eric Paschall","https://www.basketball-reference.com/players/p/pascher01.html",60,27.6,5.3,10.7,0.497,0.6,2.2,0.287,4.7,8.5,0.55,0.526,2.7,3.5,0.774,1.4,3.2,4.6,2.1,0.5,0.2,1.6,2.1,14
+"12","Goga Bitadze","https://www.basketball-reference.com/players/b/bitadgo01.html",49,8.4,1.2,2.6,0.473,0.1,0.7,0.167,1.1,1.9,0.591,0.496,0.5,0.7,0.727,0.4,1.5,2,0.4,0.1,0.7,0.5,1.2,3.1
+"13","Grant Williams","https://www.basketball-reference.com/players/w/willigr01.html",62,15.6,1.3,3.1,0.417,0.3,1.4,0.247,1,1.7,0.551,0.471,0.6,0.8,0.725,0.9,1.7,2.7,1,0.5,0.5,0.7,2.4,3.5
+"14","Ja Morant","https://www.basketball-reference.com/players/m/moranja01.html",59,30,6.7,13.6,0.491,0.9,2.4,0.367,5.8,11.2,0.517,0.523,3.5,4.5,0.77,0.7,2.8,3.5,6.9,0.9,0.3,3.2,1.5,17.6
+"15","Jalen McDaniels","https://www.basketball-reference.com/players/m/mcdanja01.html",16,18.3,2.1,4.4,0.471,0.6,1.5,0.375,1.5,2.9,0.522,0.536,0.9,1.1,0.824,0.9,3.1,4.1,0.8,0.5,0.2,0.7,2.3,5.6
+"16","Jarrett Culver","https://www.basketball-reference.com/players/c/culveja01.html",63,23.9,3.7,9,0.404,1,3.5,0.299,2.6,5.5,0.471,0.462,0.9,1.9,0.462,1.1,2.3,3.4,1.7,0.9,0.6,1.3,2,9.2
+"17","Jaxson Hayes","https://www.basketball-reference.com/players/h/hayesja02.html",56,17,2.8,4.2,0.66,0,0.1,0.25,2.8,4.1,0.667,0.662,1.9,3.1,0.63,1.5,2.5,4,0.9,0.4,0.9,0.7,2.5,7.5
+"18","Jordan Poole","https://www.basketball-reference.com/players/p/poolejo01.html",57,22.4,2.9,8.8,0.333,1.3,4.6,0.279,1.6,4.2,0.392,0.406,1.7,2.1,0.798,0.2,1.9,2.1,2.4,0.6,0.2,1.3,1.6,8.8
+"19","Kevin Porter Jr.","https://www.basketball-reference.com/players/p/porteke02.html",50,23.2,3.7,8.4,0.442,1.1,3.2,0.335,2.7,5.3,0.506,0.505,1.5,2,0.723,0.4,2.8,3.2,2.2,0.9,0.3,1.9,2.7,10
+"20","Matisse Thybulle","https://www.basketball-reference.com/players/t/thybuma01.html",57,19.5,1.7,4.1,0.41,0.9,2.5,0.352,0.8,1.6,0.5,0.517,0.4,0.7,0.61,0.6,0.9,1.5,1.2,1.4,0.7,0.8,2.1,4.7
+"21","Nassir Little","https://www.basketball-reference.com/players/l/littlna01.html",48,11.9,1.4,3.1,0.43,0.3,1.2,0.237,1.1,1.9,0.554,0.477,0.6,0.9,0.636,0.6,1.6,2.3,0.5,0.3,0.3,0.3,1.5,3.6
+"22","Nickeil Alexander-Walker","https://www.basketball-reference.com/players/a/alexani01.html",41,12.2,1.9,5.5,0.339,1,2.9,0.342,0.9,2.7,0.336,0.427,0.4,0.7,0.607,0.2,1.8,2,1.8,0.3,0.2,1,1.1,5.1
+"23","RJ Barrett","https://www.basketball-reference.com/players/b/barrerj01.html",56,30.4,5.2,13,0.402,1.1,3.5,0.32,4.1,9.5,0.432,0.445,2.8,4.5,0.614,0.9,4.1,5,2.6,1,0.3,2.2,2.2,14.3
+"24","Romeo Langford","https://www.basketball-reference.com/players/l/langfro01.html",27,11,0.9,2.4,0.375,0.2,0.9,0.217,0.7,1.5,0.463,0.414,0.6,0.9,0.696,0.5,0.7,1.2,0.2,0.3,0.2,0.3,1.1,2.6
+"25","Rui Hachimura","https://www.basketball-reference.com/players/h/hachiru01.html",41,29.7,5.3,11.1,0.478,0.5,1.8,0.274,4.8,9.3,0.517,0.5,2.2,2.7,0.829,1.5,4.5,6,1.7,0.8,0.2,1,2.2,13.4
+"26","Sekou Doumbouya","https://www.basketball-reference.com/players/d/doumbse01.html",38,19.8,2.4,6.2,0.39,0.7,2.6,0.286,1.7,3.6,0.464,0.449,0.8,1.2,0.674,0.5,2.6,3.1,0.5,0.5,0.2,0.9,2.1,6.4
+"27","Ty Jerome","https://www.basketball-reference.com/players/j/jeromty01.html",28,11.3,1.3,3.8,0.349,0.5,1.7,0.277,0.9,2.1,0.407,0.41,0.4,0.5,0.786,0.2,1.3,1.5,1.5,0.5,0.1,0.6,1,3.5
+"28","Tyler Herro","https://www.basketball-reference.com/players/h/herroty01.html",47,27.2,4.7,11.3,0.414,2.1,5.4,0.391,2.6,5.9,0.434,0.507,1.4,1.7,0.835,0.3,3.7,4,1.9,0.6,0.1,1.5,1.3,12.9
+"29","Zion Williamson","https://www.basketball-reference.com/players/w/willizi01.html",19,29.7,9.1,15.4,0.589,0.3,0.7,0.462,8.7,14.7,0.595,0.599,5.2,8,0.645,2.9,3.9,6.8,2.2,0.8,0.5,2.7,1.7,23.6
+"30","P.J. Washington","https://www.basketball-reference.com/players/w/washipj01.html",58,30.3,4.6,10.2,0.455,1.5,4,0.374,3.1,6.2,0.507,0.528,1.5,2.3,0.647,1,4.4,5.4,2.1,0.9,0.8,1.6,2.7,12.2

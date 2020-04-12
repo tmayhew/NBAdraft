@@ -14,7 +14,7 @@ library(ggthemes)
 library(dplyr)
 library(formattable)
 
-as.df = read.csv("allstardf.csv")
+as.df = read.csv("allstardfpred.csv")
 as.stats2019 = as.df %>% filter(Yr == 2019) %>% arrange(desc(allstar.pred))
 as.stats2018 = as.df %>% filter(Yr == 2018) %>% arrange(desc(allstar.pred))
 as.stats2017 = as.df %>% filter(Yr == 2017) %>% arrange(desc(allstar.pred))

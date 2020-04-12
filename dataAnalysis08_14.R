@@ -1,6 +1,15 @@
+library(rvest)
+library(ggplot2)
+library(ggthemes)
+library(gam)
+library(tidyr)
+library(formattable)
 library(dplyr)
-dat = read.csv("allstardf.csv")
-dat =  dat %>% filter(Yr > 2007 & Yr < 2015) %>% filter(WS > 0.01 & VORP > 0.01)
+
+df = read.csv("finaldf.csv")[,-1]
+dat = df %>% filter(Yr > 2007 & Yr < 2015); summary(dat$Yr)
+
+
 
 # Correlation Plot
 dat.numeric <- select(dat, -Tm, -Yrs, -College, -Player, -Yr)
@@ -13,72 +22,165 @@ pl1 = ggplot(data=mm.cor1, aes(x=reorder(var, cor), y=cor)) + geom_bar(stat = "i
 
 aic <- vector()
 
-fit1 <- glm(allstar ~ VORP, data = dat)
-aic[1] <- fit1$aic
+fit1 <- lm(allstar ~ VORP, data = dat)
+aic[1] <- AIC(fit1)
 
-fit2 <- glm(allstar ~ VORP + BPM, data = dat)
-aic[2] <- fit2$aic
+fit2 <- lm(allstar ~ VORP + p.FT, data = dat)
+aic[2] <- AIC(fit2)
 
-# BPM increased AIC
-
-fit3 <- glm(allstar ~ VORP + PTS, data = dat)
-aic[3] <- fit3$aic
+fit3 <- lm(allstar ~ VORP + p.FT + PTS, data = dat)
+aic[3] <- AIC(fit3)
 
 # PTS increased AIC
 
-fit4 <- glm(allstar ~ VORP + WS, data = dat)
-aic[4] <- fit4$aic
+fit4 <- lm(allstar ~ VORP + p.FT + WS, data = dat)
+aic[4] <- AIC(fit4)
 
-fit5 <- glm(allstar ~ VORP + WS + PPG, data = dat)
-aic[5] <- fit5$aic
+fit5 <- lm(allstar ~ VORP + p.FT + WS + PPG, data = dat)
+aic[5] <- AIC(fit5)
 
-fit6 <- glm(allstar ~ VORP + WS + PPG + AST, data = dat)
-aic[6] <- fit6$aic
+# PPG increased AIC
+
+fit6 <- lm(allstar ~ VORP + p.FT + WS + p.FTA, data = dat)
+aic[6] <- AIC(fit6)
+
+# p.FTA increased AIC
+
+fit7 <- lm(allstar ~ VORP + p.FT + WS + p.PTS, data = dat)
+aic[7] <- AIC(fit7)
+
+fit8 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM, data = dat)
+aic[8] <- AIC(fit8)
+
+fit9 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER, data = dat)
+aic[9] <- AIC(fit9)
+
+fit10 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.FG, data = dat)
+aic[10] <- AIC(fit10)
+
+# p.FG increased AIC
+
+fit11 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.FGA, data = dat)
+aic[11] <- AIC(fit11)
+
+# p.FGA increased AIC
+
+fit12 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV, data = dat)
+aic[12] <- AIC(fit12)
+
+fit13 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + AST, data = dat)
+aic[13] <- AIC(fit13)
 
 # AST increased AIC
 
-fit7 <- glm(allstar ~ VORP + WS + PPG + MPG, data = dat)
-aic[7] <- fit7$aic
+fit14 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA, data = dat)
+aic[14] <- AIC(fit14)
 
-fit8 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48, data = dat)
-aic[8] <- fit8$aic
+fit15 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.X2P, data = dat)
+aic[15] <- AIC(fit15)
 
-fit9 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP, data = dat)
-aic[9] <- fit9$aic
+# p.X2P increased AIC
 
-fit10<- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP + APG, data = dat)
-aic[10] <- fit10$aic
+fit16 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + MPG, data = dat)
+aic[16] <- AIC(fit16)
+
+# MPG increased AIC
+
+fit17 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST, data = dat)
+aic[17] <- AIC(fit17)
+
+fit18 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP, data = dat)
+aic[18] <- AIC(fit18)
+
+fit19 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + APG, data = dat)
+aic[19] <- AIC(fit19)
 
 # APG increased AIC
 
-fit11 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP + TRB, data = dat)
-aic[11] <- fit11$aic
+fit20 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48, data = dat)
+aic[20] <- AIC(fit20)
 
-fit12 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP + TRB + RPG, data = dat)
-aic[12] <- fit12$aic
+fit21 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.STL, data = dat)
+aic[21] <- AIC(fit21)
+
+# p.STL increased AIC
+
+fit22 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP, data = dat)
+aic[22] <- AIC(fit22)
+
+fit23 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB, data = dat)
+aic[23] <- AIC(fit23)
+
+fit24 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB, data = dat)
+aic[24] <- AIC(fit24)
+
+fit25 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.X3PA, data = dat)
+aic[25] <- AIC(fit25)
+
+# p.X3PA increased AIC
+
+fit26 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.X3P, data = dat)
+aic[26] <- AIC(fit26)
+
+# p.X3P increased AIC
+
+fit27 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB, data = dat)
+aic[27] <- AIC(fit27)
+
+fit28 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + RPG, data = dat)
+aic[28] <- AIC(fit28)
 
 # RPG increased AIC
 
-fit13 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP + TRB + G, data = dat)
-aic[13] <- fit13$aic
+fit29 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G, data = dat)
+aic[29] <- AIC(fit29)
 
-fit14 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP + TRB + G + FT., data = dat)
-aic[14] <- fit14$aic
+fit30 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.FT., data = dat)
+aic[30] <- AIC(fit30)
 
-# FT. increased AIC
+# p.FT increased AIC
 
-fit15 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP + TRB + G + X3P., data = dat)
-aic[15] <- fit15$aic
+fit31 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF, data = dat)
+aic[31] <- AIC(fit31)
+
+fit32 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.G, data = dat)
+aic[32] <- AIC(fit32)
+
+# p.G increaed AIC 
+
+fit33 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.BLK, data = dat)
+aic[33] <- AIC(fit33)
+
+fit34 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.BLK + p.X3P., data = dat)
+aic[34] <- AIC(fit34)
+
+# p.X3P. increased AIC
+
+fit35 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.BLK + X3P., data = dat)
+aic[35] <- AIC(fit35)
 
 # X3P. increased AIC
 
-fit16 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP + TRB + G + X3P. + X, data = dat)
-aic[16] <- fit16$aic
+fit36 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.BLK + p.ORB, data = dat)
+aic[36] <- AIC(fit36)
 
-# X increased AIC
+fit37 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.BLK + p.ORB + p.eFG., data = dat)
+aic[37] <- AIC(fit37)
 
-fit17 <- glm(allstar ~ VORP + WS + PPG + MPG + WS.48 + MP + TRB + G + X3P. + FG., data = dat)
-aic[17] <- fit17$aic
+# p.eFG. increased AIC
+
+fit38 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.BLK + p.ORB + p.X2P., data = dat)
+aic[38] <- AIC(fit38)
+
+# p.X2P. increased AIC
+
+fit39 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.BLK + p.ORB + FG., data = dat)
+aic[39] <- AIC(fit39)
+
+# FG. increased AIC
+
+fit40 <- lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB + p.TRB + G + p.PF + p.BLK + p.ORB + p.FG., data = dat)
+aic[40] <- AIC(fit40)
 
 aic.val <- data.frame(aic)
 aic.val$model <- seq(1, nrow(aic.val))
@@ -90,10 +192,22 @@ ggplot(data=aic.val, aes(x=model, y=aic)) + geom_line(linetype = "dashed") + geo
   scale_y_continuous("AIC", breaks = seq(2600, 3100, by=25)) + theme(legend.position = "none") + 
   scale_color_manual(values = c("black", "red3")) + ggtitle("AIC: Measuring Goodness of Fit for each Model")
 
-# MODEL 9:
-lm.model <-lm(allstar ~ VORP + WS + PPG + MPG, data = dat)
+# MODEL 24:
+lm.model <-lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB, data = dat)
 print(anova(lm.model))
 summary(lm.model)$coefficients[,"Estimate"]
+
+# Final GAM Model 
+gam.model = gam(allstar ~ s(VORP, 3) + s(p.FT, 3) + s(WS, 3) + s(p.PTS, 3) + s(BPM, 3) + s(p.PER, 3) + s(p.TOV, 3) + s(p.X2PA, 3) + 
+                  s(p.AST, 3) + s(MP, 3) + s(WS.48, 3) + s(p.MP, 3) + s(TRB, 3) + s(p.DRB, 3), data = dat)
+lm.model <-lm(allstar ~ VORP + p.FT + WS + p.PTS + BPM + p.PER + p.TOV + p.X2PA + p.AST + MP + WS.48 + p.MP + TRB + p.DRB, data = dat)
+
+sse.gam = sum((gam.model$residuals)^2)
+sse.lm = sum((lm.model$residuals)^2)
+df.sse = c(sse.gam, sse.lm)
+df.sse = data.frame(df.sse)
+df.sse$Model = c("GAM", "LM")
+ggplot(data = df.sse, aes(x = Model, y = df.sse))
 
 # Preliminary Assessment of Predicted All Star Appearances
 allstar.pred = predict(lm.model, dat)
