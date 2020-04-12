@@ -1,5 +1,3 @@
-# https://zoom.us/j/97428874837?pwd=b1czTEEwS1lJSGJvMmdPeXdTTTZndz09
-
 library(rvest)
 library(ggplot2)
 library(ggthemes)
