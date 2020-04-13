@@ -59,6 +59,7 @@ draft2011 = final.df %>% filter(Yr == 2011) %>% arrange(desc(PC1));print(draft20
 draft2010 = final.df %>% filter(Yr == 2010) %>% arrange(desc(PC1));print(draft2010)
 draft2009 = final.df %>% filter(Yr == 2009) %>% arrange(desc(PC1));print(draft2009)
 draft2008 = final.df %>% filter(Yr == 2008) %>% arrange(desc(PC1));print(draft2008)
+
 #draft2000 = final.df %>% filter(Yr == 2000) %>% arrange(desc(PC1));print(draft2000)
 #draft1999 = final.df %>% filter(Yr == 1999) %>% arrange(desc(PC1));print(draft1999)
 #draft1998 = final.df %>% filter(Yr == 1998) %>% arrange(desc(PC1));print(draft1998)

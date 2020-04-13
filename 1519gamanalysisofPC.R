@@ -52,7 +52,19 @@ new.df$allstar.pred = predictions
 final.df = new.df %>% select(Player, Yr, Yrs, allstar, allstar.pred, PC1, PC2)
 
 draft2019 = final.df %>% filter(Yr == 2019) %>% arrange(desc(PC1));print(draft2019)
+draft2019 = cbind.data.frame(pk = 1:30, draft2019)
+
 draft2018 = final.df %>% filter(Yr == 2018) %>% arrange(desc(PC1));print(draft2018)
+draft2018 = cbind.data.frame(pk = 1:30, draft2018)
+
 draft2017 = final.df %>% filter(Yr == 2017) %>% arrange(desc(PC1));print(draft2017)
+draft2017 = cbind.data.frame(pk = 1:30, draft2017)
+
 draft2016 = final.df %>% filter(Yr == 2016) %>% arrange(desc(PC1));print(draft2016)
+draft2016 = cbind.data.frame(pk = 1:30, draft2016)
+
 draft2015 = final.df %>% filter(Yr == 2015) %>% arrange(desc(PC1));print(draft2015)
+draft2015 = cbind.data.frame(pk = 1:30, draft2015)
+
+df = rbind.data.frame(draft2019, draft2018, draft2017, draft2016, draft2015)
+write.csv(df, "drafts20152019.csv")
