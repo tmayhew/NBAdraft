@@ -53,15 +53,25 @@ new.df$allstar.pred = predictions
 final.df = new.df %>% select(Player, Yr, Yrs, allstar, allstar.pred, PC1, PC2)
 
 draft2014 = final.df %>% filter(Yr == 2014) %>% arrange(desc(PC1));print(draft2014)
+draft2014 = cbind.data.frame(pk = 1:30, draft2014)
+
 draft2013 = final.df %>% filter(Yr == 2013) %>% arrange(desc(PC1));print(draft2013)
+draft2013 = cbind.data.frame(pk = 1:30, draft2013)
+
 draft2012 = final.df %>% filter(Yr == 2012) %>% arrange(desc(PC1));print(draft2012)
+draft2012 = cbind.data.frame(pk = 1:30, draft2012)
+
 draft2011 = final.df %>% filter(Yr == 2011) %>% arrange(desc(PC1));print(draft2011)
+draft2011 = cbind.data.frame(pk = 1:30, draft2011)
+
 draft2010 = final.df %>% filter(Yr == 2010) %>% arrange(desc(PC1));print(draft2010)
+draft2010 = cbind.data.frame(pk = 1:30, draft2010)
+
 draft2009 = final.df %>% filter(Yr == 2009) %>% arrange(desc(PC1));print(draft2009)
+draft2009 = cbind.data.frame(pk = 1:30, draft2009)
+
 draft2008 = final.df %>% filter(Yr == 2008) %>% arrange(desc(PC1));print(draft2008)
-#draft2000 = final.df %>% filter(Yr == 2000) %>% arrange(desc(PC1));print(draft2000)
-#draft1999 = final.df %>% filter(Yr == 1999) %>% arrange(desc(PC1));print(draft1999)
-#draft1998 = final.df %>% filter(Yr == 1998) %>% arrange(desc(PC1));print(draft1998)
-#draft1997 = final.df %>% filter(Yr == 1997) %>% arrange(desc(PC1));print(draft1997)
-#draft1996 = final.df %>% filter(Yr == 1996) %>% arrange(desc(PC1));print(draft1996)
-#draft1995 = final.df %>% filter(Yr == 1995) %>% arrange(desc(PC1));print(draft1995)
+draft2008 = cbind.data.frame(pk = 1:30, draft2008)
+
+df = rbind.data.frame(draft2014, draft2013, draft2012, draft2011, draft2010, draft2009, draft2008)
+write.csv(df, "drafts20082014.csv")
