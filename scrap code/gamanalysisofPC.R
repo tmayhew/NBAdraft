@@ -20,17 +20,21 @@ pr.out$scale
 pr.out$rotation[,1:3]
 pr.out$x
 
-pr.var = pr.out$sdev^2
-pr.var = pr.var[1:25]
-perc.df = cbind.data.frame(pc.index = 1:25, pc.ex = pr.var)
+pr.var1 = pr.out$sdev^2
+pr.var1[length(pr.var1)]
+pr.var = pr.var1[1:25]
+perc.df = cbind.data.frame(pc.index = 1:25, tot.ex = pr.var)
 for (i in 1:nrow(perc.df)){
   if (i == 1){
-    perc.df$cum.p[i] = perc.df$pc.ex[i]
+    perc.df$cum.p[i] = perc.df$tot.ex[i]
   } else{
-    perc.df$cum.p[i] = perc.df$pc.ex[i] + perc.df$cum.p[i-1]
+    perc.df$cum.p[i] = (perc.df$tot.ex[i] + perc.df$cum.p[i-1])
   }
 }
-perc.df %>% ggplot(aes(x = pc.index, y = cum.p)) + geom_bar(stat = "identity", width = I(1/12)) + theme_clean() + scale_x_continuous(name = "Principal Component", breaks = 1:25) + scale_y_continuous("Cumulative Percent Explained")
+perc.df$pc.ex = perc.df$tot.ex/(sum(pr.var1))
+perc.df$cum.pc.ex = perc.df$cum.p/(sum(pr.var1))
+perc.df %>% ggplot(aes(x = pc.index, y = cum.pc.ex)) + geom_bar(stat = "identity", width = I(1/12)) + theme_clean() + scale_x_continuous(name = "Principal Component", breaks = 1:25) + scale_y_continuous("Cumulative Percent Explained") + geom_point() +
+  geom_point(aes(x = pc.index, y = pc.ex)) + geom_line(aes(x = pc.index, y = pc.ex), color = "red")
 
 new.var = pr.out$x[,1:8]
 new.df = cbind.data.frame(names, new.var)

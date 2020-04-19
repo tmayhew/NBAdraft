@@ -17,4 +17,3 @@ for (i in 1:length(datPl)){
 }
 
 df <- merge(x=dat, y=primedf, by="Player", all=TRUE)
-write.csv(df, "finaldf.csv")

@@ -14,7 +14,7 @@ dfYEAR$Player[which(dfYEAR$Player %!in% statsYEAR$Player)]
 
 rownames(dfYEAR) <- NULL
 
-sc.YEARdf = scrape_nbapl(dfYEAR)
+sc.YEARdf = scrape_nbapl2(dfYEAR)
 write.csv(sc.YEARdf, "sc.YEARdf.csv")
 
 dfYEAR = read.csv("sc.YEARdf.csv")

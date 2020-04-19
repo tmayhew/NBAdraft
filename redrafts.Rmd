@@ -1,0 +1,525 @@
+---
+title: "Redraft Summaries"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r, include = F}
+library(rvest)
+library(ggplot2)
+library(ggthemes)
+library(tidyverse)
+library(nbastatR)
+
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+draftpool1 = read.csv("data/drafts20152019.csv")[,-1]
+draftpool2 = read.csv("data/drafts20082014.csv")[,-1]
+draftpool3 = read.csv("data/drafts19952007.csv")[,-1]
+df = rbind.data.frame(draftpool1, draftpool2, draftpool3)
+head(df)
+nrow(df)
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2019 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2019) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2018 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2018) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2017 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2017) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2016 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2016) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2015 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2015) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2014 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2014) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2013 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2013) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2012 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2012) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2011 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2011) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2010 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2010) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2009 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2009) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2008 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2008) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2007 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2007) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2006 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2006) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2005 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2005) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2004 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2004) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2003 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2003) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2002 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2002) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2001 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2001) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 2000 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 2000) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1999 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 1999) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1998 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 1998) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1997 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 1997) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1996 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 1996) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```
+
+  ```{r, results='asis', echo=FALSE}
+cat("\\newpage")
+```
+
+## 1995 Draft
+```{r, echo = F}
+dat = df %>% filter(Yr == 1995) %>% select(-Yr, -Yrs, -College, -PC2)
+for (i in 1:nrow(dat)){
+  if (dat$allstar.pred[i] < 0){
+    dat$allstar.pred[i] = 0
+  }
+  if (i > 20){
+    dat$allstar.pred[i] = 0
+  }
+}
+dat$allstar.pred = round(dat$allstar.pred, 3)
+dat
+
+```

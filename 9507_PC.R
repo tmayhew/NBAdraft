@@ -6,7 +6,7 @@ library(nbastatR)
 library(stats)
 library(gam)
 
-df = read.csv("finaldf.csv")[,-1]
+df = read.csv("data/finaldf.csv")[,-1]
 dat1 = df %>% filter(Yr < 2008); summary(dat1$Yr)
 dat2 = df %>% filter(Yr > 2007 & Yr < 2015); summary(dat2$Yr)
 dat3 = df %>% filter(Yr > 2014); summary(dat3$Yr)
@@ -51,7 +51,7 @@ ggplot(data = subset(df2, Type == "Real"), aes(x = X, y = Y)) + geom_point(alpha
 gam.model = gam(allstar ~ s(PC1, 4), data = new.df)
 predictions = predict(gam.model, data = new.df)
 new.df$allstar.pred = predictions
-final.df = new.df %>% select(Player, Yr, Yrs, allstar, allstar.pred, PC1, PC2)
+final.df = new.df %>% select(Player, College, Yr, Yrs, allstar, allstar.pred, PC1, PC2)
 
 draft2007 = final.df %>% filter(Yr == 2007) %>% arrange(desc(PC1));print(draft2007)
 draft2007 = cbind.data.frame(pk = 1:30, draft2007)
@@ -83,5 +83,5 @@ draft1995 = cbind.data.frame(pk = 1:30, draft1995)
 df = rbind.data.frame(draft1995, draft1996, draft1997, draft1998, draft1999,
                  draft2000, draft2001, draft2002, draft2003, draft2004,
                  draft2005, draft2006, draft2007)
-write.csv(df, "drafts19952007.csv")
+
 

@@ -5,7 +5,7 @@ library(tidyverse)
 library(nbastatR)
 '%!in%' <- function(x,y)!('%in%'(x,y))
 
-dat = read.csv("allstardf.csv")
+dat = read.csv("data/allstardf.csv")
 summary(dat$Yr)
 stats2019 = dat[,-1] %>% filter(Yr == 2019) %>% arrange(desc(MP))
 stats2019 = stats2019[1:30,]
@@ -88,7 +88,7 @@ statsdf = rbind.data.frame(stats2019, stats2018, stats2017, stats2016, stats2015
                            stats2009, stats2008, stats2007, stats2006, stats2005, 
                            stats2004, stats2003, stats2002, stats2001, stats2000,
                            stats1999, stats1998, stats1997, stats1996, stats1995)
-write.csv(statsdf, "statsdf.csv")
+#write.csv(statsdf, "statsdf.csv")
                            
 
 "scrape_nbapl = function(df){
@@ -289,7 +289,7 @@ primedf = rbind.data.frame(df1995, df1996, df1997, df1998, df1999,
                             df2005, df2006, df2007, df2008, df2009,
                             df2010, df2011, df2012, df2013, df2014,
                             df2015, df2016, df2017, df2018, df2019)
-write.csv(primedf, "primedf.csv")
+
 
 
 
