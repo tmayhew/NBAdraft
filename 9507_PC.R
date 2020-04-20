@@ -20,6 +20,16 @@ pr.out$scale
 pr.out$rotation[,1:3]
 pr.out$x
 
+PC1weights = data.frame(pr.out$rotation[,1])
+PC1weights[,2] = rownames(PC1weights)
+colnames(PC1weights) = c("weight", "stat")
+rownames(PC1weights) = NULL
+PC1weights = PC1weights %>% select(stat, weight)
+PC1weights$weight = abs(as.numeric(as.character(PC1weights$weight)))
+PC1weights = PC1weights %>% arrange((weight))
+PC1weights$stat = factor(as.character(PC1weights$stat), levels = PC1weights$stat)
+PC1weights %>% ggplot(aes(x = stat, y = weight)) + geom_bar(stat = "identity", width = I(1/4)) + theme_bw() + coord_flip() + ggtitle("Weights for PC1", subtitle = "1995-2007 Drafts") + scale_x_discrete("") + scale_y_continuous("")
+
 pr.var = pr.out$sdev^2
 pr.var = pr.var[1:25]
 perc.df = cbind.data.frame(pc.index = 1:25, pc.ex = pr.var)
